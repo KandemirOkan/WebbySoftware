@@ -15,22 +15,6 @@ namespace WebbySoftware.Models.WebDevModel {
         public string ProjectGitLink { get; set; }
         public string ProjectWebpage { get; set; }
 
-        public void Add() {
-            throw new NotImplementedException();
-        }
-
-        public void Delete() {
-            throw new NotImplementedException();
-        }
-
-        public void Remove() {
-            throw new NotImplementedException();
-        }
-
-        public void Update() {
-            throw new NotImplementedException();
-        }
-
         public WebDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectWebpage) {
 
             //base attributes

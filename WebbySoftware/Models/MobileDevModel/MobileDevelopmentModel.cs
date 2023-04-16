@@ -16,22 +16,6 @@ namespace WebbySoftware.Models.MobileDevModel {
         public string ProjectDownloadLink { get; set; }
         public string ProjectDownloadPath { get; set; }
 
-        public void Add() {
-            throw new NotImplementedException();
-        }
-
-        public void Delete() {
-            throw new NotImplementedException();
-        }
-
-        public void Remove() {
-            throw new NotImplementedException();
-        }
-
-        public void Update() {
-            throw new NotImplementedException();
-        }
-
         public MobileDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
 
             //base attributes

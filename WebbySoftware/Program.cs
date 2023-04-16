@@ -30,7 +30,9 @@ namespace WebbySoftware
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}");
 
+			Console.WriteLine("Application branch testing");
 			app.Run();
+
 		}
 	}
 }

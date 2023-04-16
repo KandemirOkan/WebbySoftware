@@ -29,9 +29,6 @@ namespace WebbySoftware
 			app.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}");
-
-			Console.WriteLine("Application branch testing");
-			Console.WriteLine("Learning Gitgub");
 			app.Run();
 
 		}

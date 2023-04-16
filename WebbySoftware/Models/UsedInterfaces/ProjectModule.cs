@@ -7,11 +7,6 @@
         public string ProjectVersion { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-
-        public void Add();
-        public void Remove();
-        public void Update();
-        public void Delete();
             
     }
 }

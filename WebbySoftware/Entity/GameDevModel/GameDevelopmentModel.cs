@@ -19,7 +19,7 @@ namespace WebbySoftware.Entity.GameDevModel
         public string ProjectGitLink { get; set; }
         public string ProjectDownloadPath { get; set; }
 
-        public GameDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
+        public GameDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectPath) {
 
             //base attributes
             CreationDate = DateTime.Now;

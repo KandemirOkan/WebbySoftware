@@ -1,26 +1,28 @@
-﻿using WebbySoftware.Models.Interfaces;
+﻿using WebbySoftware.Entity.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebbySoftware.Models.MobileDevModel {
-    public class MobileDevelopmentModel: BaseAtrributes, ProjectModule, MobileAppDevelopmentInt {
+namespace WebbySoftware.Entity.WebDevModel {
+    public class WebDevelopmentModel : BaseAtrributes, ProjectModule, WebDevelopmentInt {
 
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public bool Active { get; set; }
         public bool Deleted { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
         public string ProjectVersion { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-        public string ProjectDownloadLink { get; set; }
-        public string ProjectDownloadPath { get; set; }
+        public string ProjectWebpage { get; set; }
 
-        public MobileDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
+        public WebDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectWebpage) {
 
             //base attributes
-            CreationDate = DateTime.Now;
-            UpdateDate = DateTime.Now;
+            CreationDate= DateTime.Now;
+            UpdateDate= DateTime.Now;
             Active = true;
             Deleted = false;
 
@@ -32,8 +34,7 @@ namespace WebbySoftware.Models.MobileDevModel {
             ProjectGitLink = _projectGitLink;
 
             // specific attributes
-            ProjectDownloadLink = _projectLink;
-            ProjectDownloadPath = _projectPath;
+            ProjectWebpage = _projectWebpage;
 
         }
     }

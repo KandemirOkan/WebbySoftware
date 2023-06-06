@@ -1,6 +1,7 @@
-﻿using WebbySoftware.Models.Interfaces;
+﻿using WebbySoftware.Entity.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebbySoftware.Models.GameDevModel
+namespace WebbySoftware.Entity.GameDevModel
 {
     public class GameDevelopmentModel: BaseAtrributes, ProjectModule, GameDevelopmentInt {
 
@@ -9,6 +10,8 @@ namespace WebbySoftware.Models.GameDevModel
         public bool Active { get; set; }
         public bool Deleted { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID {get; set;}
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
         public string ProjectVersion { get; set; }

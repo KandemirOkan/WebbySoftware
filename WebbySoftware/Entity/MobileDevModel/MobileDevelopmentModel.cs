@@ -1,25 +1,29 @@
-﻿using WebbySoftware.Models.Interfaces;
+﻿using WebbySoftware.Entity.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebbySoftware.Models.WebDevModel {
-    public class WebDevelopmentModel : BaseAtrributes, ProjectModule, WebDevelopmentInt {
+namespace WebbySoftware.Entity.MobileDevModel {
+    public class MobileDevelopmentModel: BaseAtrributes, ProjectModule, MobileAppDevelopmentInt {
 
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public bool Active { get; set; }
         public bool Deleted { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID {get; set;}
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
         public string ProjectVersion { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-        public string ProjectWebpage { get; set; }
+        public string ProjectDownloadLink { get; set; }
+        public string ProjectDownloadPath { get; set; }
 
-        public WebDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectWebpage) {
+        public MobileDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
 
             //base attributes
-            CreationDate= DateTime.Now;
-            UpdateDate= DateTime.Now;
+            CreationDate = DateTime.Now;
+            UpdateDate = DateTime.Now;
             Active = true;
             Deleted = false;
 
@@ -31,7 +35,8 @@ namespace WebbySoftware.Models.WebDevModel {
             ProjectGitLink = _projectGitLink;
 
             // specific attributes
-            ProjectWebpage = _projectWebpage;
+            ProjectDownloadLink = _projectLink;
+            ProjectDownloadPath = _projectPath;
 
         }
     }

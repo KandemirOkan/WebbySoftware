@@ -5,9 +5,9 @@ namespace WebbySoftware.DBOperations{
 
     public interface IWebbySoftDBContext{
 
-        public DbSet<GameDevelopmentModel> GameDevelopmentModels { get; set; }
-        public DbSet<MobileDevelopmentModel> MobileDevelopmentModels { get; set; }
-        public DbSet<WebDevelopmentModel> WebDevelopmentModels { get; set; }
+        public DbSet<GameDev> Games { get; set; }
+        public DbSet<MobileDev> MobileApps { get; set; }
+        public DbSet<WebDev> WebApps { get; set; }
 
         int SaveChanges();
     }

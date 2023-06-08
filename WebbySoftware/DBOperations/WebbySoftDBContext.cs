@@ -11,7 +11,7 @@ namespace WebbySoftware.DBOperations{
         }
         
         // Define DbSet properties for each of your models
-        public DbSet<GameDevelopmentModel> GameDevelopmentModels { get; set; }
+        public DbSet<GameDev> GameDevelopmentModels { get; set; }
         public DbSet<MobileDevelopmentModel> MobileDevelopmentModels { get; set; }
         public DbSet<WebDevelopmentModel> WebDevelopmentModels { get; set; }
 

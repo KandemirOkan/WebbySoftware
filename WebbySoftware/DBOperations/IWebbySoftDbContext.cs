@@ -1,5 +1,7 @@
-using WebbySoftware.Entity;
-using Microsoft FrameworkCore;
+using WebbySoftware.Entity.GameDev;
+using WebbySoftware.Entity.MobileDev;
+using WebbySoftware.Entity.WebDev;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebbySoftware.DBOperations{
 

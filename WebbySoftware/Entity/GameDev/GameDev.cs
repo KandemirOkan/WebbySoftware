@@ -1,9 +1,8 @@
-﻿using WebbySoftware.Entity.Interfaces;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebbySoftware.Entity.GameDev
 {
-    public class GameDev: BaseAtrributes, ProjectModule, GameDevelopmentInt {
+    public class GameDev: IBaseAtrributes, IProjectModule {
 
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
@@ -16,7 +15,6 @@ namespace WebbySoftware.Entity.GameDev
         public string ProjectDescription { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-        public string ProjectDownloadPath { get; set; }
 
         public GameDev(string _projectName, string _projectDescription, List<string> _thumbnails, string _projectGitLink, string _projectPath) {
             //base attributes
@@ -32,7 +30,6 @@ namespace WebbySoftware.Entity.GameDev
             ProjectGitLink = _projectGitLink;
 
             // specific attributes
-            ProjectDownloadPath = _projectPath;
         }
     }
 }

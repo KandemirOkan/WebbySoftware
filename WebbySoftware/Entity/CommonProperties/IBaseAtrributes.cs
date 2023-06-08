@@ -1,5 +1,5 @@
-﻿namespace WebbySoftware.Models.Interfaces {
-    public interface BaseAtrributes {
+﻿namespace WebbySoftware.Entity {
+    public interface IBaseAtrributes {
 
         //Base Attributes
         public DateTime CreationDate { get; set; }

@@ -1,6 +1,6 @@
-﻿namespace WebbySoftware.GameDev
+﻿namespace WebbySoftware.Entity.GameDev
 {
-    public interface GameDevInt
+    public interface IGameDev
     {
         public string ProjectDownloadPath { get; set; }
     }

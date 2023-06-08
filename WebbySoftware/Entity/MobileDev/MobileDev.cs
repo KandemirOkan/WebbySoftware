@@ -1,8 +1,7 @@
-﻿using WebbySoftware.Entity.Interfaces;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebbySoftware.Entity.MobileDevModel {
-    public class MobileDevelopmentModel: BaseAtrributes, ProjectModule, MobileAppDevelopmentInt {
+namespace WebbySoftware.Entity.MobileDev {
+    public class MobileDev: IBaseAtrributes, IProjectModule, IMobileDev {
 
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
@@ -13,13 +12,11 @@ namespace WebbySoftware.Entity.MobileDevModel {
         public int ID {get; set;}
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
-        public string ProjectVersion { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-        public string ProjectDownloadLink { get; set; }
-        public string ProjectDownloadPath { get; set; }
+        public string ProjectLink { get; set; }
 
-        public MobileDevelopmentModel(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
+        public MobileDev(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
 
             //base attributes
             CreationDate = DateTime.Now;
@@ -30,13 +27,11 @@ namespace WebbySoftware.Entity.MobileDevModel {
             //common attributes
             ProjectName = _projectName;
             ProjectDescription = _projectDescription;
-            ProjectVersion = _projectVersion;
             Thumbnails = _thumbnails;
             ProjectGitLink = _projectGitLink;
 
             // specific attributes
-            ProjectDownloadLink = _projectLink;
-            ProjectDownloadPath = _projectPath;
+            ProjectLink = _projectLink;
 
         }
     }

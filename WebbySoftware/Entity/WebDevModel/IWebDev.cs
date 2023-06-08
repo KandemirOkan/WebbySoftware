@@ -1,6 +1,6 @@
-﻿namespace WebbySoftware.Models.WebDevModel
+﻿namespace WebbySoftware.Entity
 {
-    public interface WebDevelopmentInt
+    public interface IWebDev
     {
         //Attributes specific to Web Development
         public string ProjectWebpage { get; set; }

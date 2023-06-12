@@ -31,24 +31,28 @@ namespace WebbySoftware.Common{
             CreateMap<UpdateGameModel, GameDev>();
             CreateMap<GameDev, GameDevViewModel>()
             .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<GameDev, GameDevViewModel>().ReverseMap();
 
             //Map for mobile apps
             CreateMap<MobileAppDevModel, MobileDev>();
             CreateMap<UpdateMobileAppModel, MobileDev>();
             CreateMap<MobileDev, MobileAppDevViewModel>()
             .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<MobileDev, MobileAppDevViewModel>().ReverseMap();
 
             //Map for Web apps
             CreateMap<WebDevModel, WebDev>();
             CreateMap<UpdateWebAppModel, WebDev>();
             CreateMap<WebDev, WebViewModel>()
             .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<WebDev, WebViewModel>().ReverseMap();
 
             //User maps
             CreateMap<CreateUserModel, User>();
             CreateMap<User, UserViewModel>()
             .ForMember(dest=>dest.Name, opt=>opt.MapFrom(src => (src.Name).ToString()))
             .ForMember(dest=>dest.Id, opt=>opt.MapFrom(src => (src.Id)));
+            CreateMap<User, UserViewModel>().ReverseMap();
 
         }
     }

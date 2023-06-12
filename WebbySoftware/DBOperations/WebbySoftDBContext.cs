@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using WebbySoftware.Entity.User;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
@@ -17,6 +18,8 @@ namespace WebbySoftware.DBOperations
         public DbSet<GameDev> Games { get; set; }
         public DbSet<MobileDev> MobileApps { get; set; }
         public DbSet<WebDev> WebApps { get; set; }
+
+        public DbSet<User> Users {get;set;}
 
         public override int SaveChanges()
         {

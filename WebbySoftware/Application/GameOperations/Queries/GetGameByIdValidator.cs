@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace WebbySoftware.Application.GameOperations.Queries
 {
-    public class GetGameByIdValidator: AbstractValidator<GetGameById>
+    public class GetGameByIdValidator: AbstractValidator<GetGameByID>
     {
         public GetGameByIdValidator()
         {

@@ -1,6 +1,6 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entities;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.UserOperations.Queries
 {

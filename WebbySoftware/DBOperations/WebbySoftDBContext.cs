@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using WebbySoftware.Entity.User;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.DBOperations
 {

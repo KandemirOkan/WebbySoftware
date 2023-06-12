@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebbySoftware.Entity
+namespace WebbySoftware.Entity.User
 {
     public class User
     {

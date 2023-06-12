@@ -4,7 +4,8 @@ using WebbySoftware.Entity.WebDev;
 using WebbySoftware.Entity.User;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebbySoftware.DBOperations{
+namespace WebbySoftware.DBOperations
+{
 
     public interface IWebbySoftDBContext{
 

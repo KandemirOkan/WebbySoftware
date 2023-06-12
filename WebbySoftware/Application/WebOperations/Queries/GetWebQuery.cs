@@ -9,7 +9,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         private readonly IWebbySoftDBContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetGameQuery (IWebbySoftDBContext dbContext, IMapper mapper){
+        public GetWebQuery (IWebbySoftDBContext dbContext, IMapper mapper){
             _dbContext = dbContext;
             _mapper = mapper;
         }

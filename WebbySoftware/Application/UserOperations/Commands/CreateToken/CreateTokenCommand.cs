@@ -1,6 +1,6 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
-using WebbySoftware.TokenOperations.Models;
+using WebbySoftware.TokenOperations;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace WebbySoftware.Application.UserOperations.Commands.CreateToken

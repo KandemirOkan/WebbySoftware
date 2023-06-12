@@ -1,5 +1,4 @@
-using WebbySoftware.Entity;
-using WebbySoftware.TokenOperations;
+using WebbySoftware.Entity.User;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;

@@ -38,7 +38,6 @@ namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
         public string ProjectDescription;
         public List<string> Thumbnails;
         public string ProjectGitLink;
-        public string ProjectLink;
         public string ProjectWebpage;
 
     }

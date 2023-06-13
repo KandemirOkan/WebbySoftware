@@ -1,3 +1,6 @@
+using WebbySoftware.DBOperations;
+using Microsoft.EntityFrameworkCore;
+
 namespace WebbySoftware
 {
 	public class Program
@@ -8,6 +11,9 @@ namespace WebbySoftware
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
+
+			builder.Services.AddDbContext<WebbySoftDbContext>(options =>
+						options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 			var app = builder.Build();
 

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
@@ -9,9 +9,17 @@ namespace WebbySoftware.DBOperations
 {
     public class WebbySoftDbContext : DbContext, IWebbySoftDBContext
     {
+
+        private readonly IConfiguration configuration;
+
         public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options) : base(options)
         {
 
+        }
+
+        public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options, IConfiguration configuration) : base(options)
+        {
+            this.configuration = configuration;
         }
         
         // Define DbSet properties for each of your models
@@ -32,7 +40,12 @@ namespace WebbySoftware.DBOperations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging();
+            string connectionString = configuration.GetConnectionString("DefaultConnection");
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){

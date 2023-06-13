@@ -20,7 +20,7 @@ namespace WebbySoftware.Entity.GameDev
 
         public ICollection<UserGameDev> UserGameDevs { get; set; }
 
-        public GameDev(string _projectName, string _projectDescription, List<string> _thumbnails, string _projectGitLink, string _projectPath) {
+        public GameDev(string _projectName, string _projectDescription, List<string> _thumbnails, string _projectGitLink) {
             //base attributes
             CreationDate = DateTime.Now;
             UpdateDate = DateTime.Now;

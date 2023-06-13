@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.User;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.DBOperations
 {
@@ -21,9 +21,9 @@ namespace WebbySoftware.DBOperations
 
         public DbSet<User> Users {get;set;}
 
-        public DBSet<UserGameDev> UserGameDevs {get;set;}
-        public DBSet<UserWebDev> UserWebDevs {get;set;}
-        public DBSet<UserMobileDev> UserMobileDevs {get;set;}
+        public DbSet<UserGameDev> UserGameDevs {get;set;}
+        public DbSet<UserWebDev> UserWebDevs {get;set;}
+        public DbSet<UserMobileDev> UserMobileDevs {get;set;}
 
         public override int SaveChanges()
         {
@@ -40,43 +40,43 @@ namespace WebbySoftware.DBOperations
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<UserGameDev>()
-                .HasKey(ug => new { ug.UserId, ug.GameDevId });
+                .HasKey(ug => new { ug.GameID, ug.UserID });
 
             modelBuilder.Entity<UserGameDev>()
-                .HasOne(ug => ug.User)
+                .HasOne(ug => ug.Users)
                 .WithMany(u => u.UserGameDevs)
-                .HasForeignKey(ug => ug.UserId);
+                .HasForeignKey(ug => ug.UserID);
 
             modelBuilder.Entity<UserGameDev>()
-                .HasOne(ug => ug.GameDev)
+                .HasOne(ug => ug.GameDevs)
                 .WithMany(g => g.UserGameDevs)
-                .HasForeignKey(ug => ug.GameDevId);
+                .HasForeignKey(ug => ug.GameID);
 
             modelBuilder.Entity<UserMobileDev>()
-                .HasKey(um => new { um.UserId, um.MobileDevId });
+                .HasKey(um => new { um.MobileAppID, um.UserID });
 
             modelBuilder.Entity<UserMobileDev>()
-                .HasOne(um => um.User)
+                .HasOne(um => um.MobileDevs)
                 .WithMany(u => u.UserMobileDevs)
-                .HasForeignKey(um => um.UserId);
+                .HasForeignKey(um => um.MobileAppID);
 
             modelBuilder.Entity<UserMobileDev>()
-                .HasOne(um => um.MobileDev)
+                .HasOne(um => um.Users)
                 .WithMany(m => m.UserMobileDevs)
-                .HasForeignKey(um => um.MobileDevId);
+                .HasForeignKey(um => um.MobileAppID);
 
             modelBuilder.Entity<UserWebDev>()
-                .HasKey(uw => new { uw.UserId, uw.WebDevId });
+                .HasKey(uw => new { uw.UserID, uw.WebAppID });
 
             modelBuilder.Entity<UserWebDev>()
-                .HasOne(uw => uw.User)
+                .HasOne(uw => uw.Users)
                 .WithMany(u => u.UserWebDevs)
-                .HasForeignKey(uw => uw.UserId);
+                .HasForeignKey(uw => uw.UserID);
 
             modelBuilder.Entity<UserWebDev>()
-                .HasOne(uw => uw.WebDev)
+                .HasOne(uw => uw.WebDevs)
                 .WithMany(w => w.UserWebDevs)
-                .HasForeignKey(uw => uw.WebDevId);
+                .HasForeignKey(uw => uw.WebAppID);
                 }
             }
 }

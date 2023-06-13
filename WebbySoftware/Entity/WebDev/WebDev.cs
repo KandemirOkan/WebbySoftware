@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using WebbySoftware.Entity;
 
 namespace WebbySoftware.Entity.WebDev {
     public class WebDev : IBaseAtrributes, IProjectModule, IWebDev {

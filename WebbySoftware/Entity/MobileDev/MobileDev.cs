@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using WebbySoftware.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace WebbySoftware.Entity.MobileDev {
     public class MobileDev: IBaseAtrributes, IProjectModule, IMobileDev {

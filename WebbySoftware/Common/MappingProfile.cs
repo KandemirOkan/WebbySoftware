@@ -2,7 +2,7 @@ using AutoMapper;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.User;
+using WebbySoftware.Entity.UserDev;
 
 using WebbySoftware.Application.GameOperations.Commands.CreateGame;
 using WebbySoftware.Application.GameOperations.Commands.UpdateGame;
@@ -27,40 +27,26 @@ namespace WebbySoftware.Common{
         public MappingProfile(){
 
             //Map for games
-            CreateMap<GameDevModel, GameDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<UpdateGameModel, GameDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<GameDev, GameDevViewModel>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
+            CreateMap<GameDevModel, GameDev>();
+            CreateMap<UpdateGameModel, GameDev>();
+            CreateMap<GameDev, GameDevViewModel>();
             CreateMap<GameDev, GameDevViewModel>().ReverseMap();
 
             //Map for mobile apps
-            CreateMap<MobileAppDevModel, MobileDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<UpdateMobileAppModel, MobileDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<MobileDev, MobileAppDevViewModel>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
+            CreateMap<MobileAppDevModel, MobileDev>();
+            CreateMap<UpdateMobileAppModel, MobileDev>();
+            CreateMap<MobileDev, MobileAppDevViewModel>();
             CreateMap<MobileDev, MobileAppDevViewModel>().ReverseMap();
 
             //Map for Web apps
-            CreateMap<WebDevModel, WebDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<UpdateWebAppModel, WebDev>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
-            CreateMap<WebDev, WebViewModel>()
-            .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
+            CreateMap<WebDevModel, WebDev>();
+            CreateMap<UpdateWebAppModel, WebDev>();
+            CreateMap<WebDev, WebViewModel>();
             CreateMap<WebDev, WebViewModel>().ReverseMap();
 
             //User maps
             CreateMap<CreateUserModel, User>();
-            CreateMap<User, UserViewModel>()
-            .ForMember(dest=>dest.Name, opt=>opt.MapFrom(src => (src.Name).ToString()))
-            .ForMember(dest=>dest.Id, opt=>opt.MapFrom(src => (src.Id)))
-            .ForMember(dest => dest.Games, opt => opt.MapFrom(src => src.Games.Select(g => g.ProjectName)))
-            .ForMember(dest => dest.WebApps, opt => opt.MapFrom(src => src.Games.Select(g => g.ProjectName)))
-            .ForMember(dest => dest.MobileApps, opt => opt.MapFrom(src => src.Games.Select(g => g.ProjectName)));
+            CreateMap<User, UserViewModel>();
             CreateMap<User, UserViewModel>().ReverseMap();
 
         }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
 

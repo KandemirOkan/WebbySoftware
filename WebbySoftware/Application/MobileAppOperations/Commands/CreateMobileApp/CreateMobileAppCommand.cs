@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.MobileDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp{
 

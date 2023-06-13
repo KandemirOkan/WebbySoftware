@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using WebbySoftware.Entity.UserDev;
 
-
-namespace WebbySoftware.Entity.UserGameDev
+namespace WebbySoftware.Entity.GameDev
 {
-    //Product ile Category'nin bağlantısını sağlamak için üretilen ara sınıf
     public class UserGameDev
     {
         public int GameID { get; set; }

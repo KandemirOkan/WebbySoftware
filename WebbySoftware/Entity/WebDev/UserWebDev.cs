@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using WebbySoftware.Entity.UserDev;
 
 
-namespace WebbySoftware.Entity.UserWebDev
+namespace WebbySoftware.Entity.WebDev
 {
     //Product ile Category'nin bağlantısını sağlamak için üretilen ara sınıf
     public class UserWebDev

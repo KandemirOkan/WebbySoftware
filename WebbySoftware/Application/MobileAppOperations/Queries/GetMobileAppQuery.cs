@@ -30,6 +30,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public List<string> Thumbnails;
         public string ProjectGitLink;
         public string ProjectLink;
+        public List<User> Users;
 
     }
 }

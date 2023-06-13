@@ -39,6 +39,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp
         public List<string> Thumbnails;
         public string ProjectGitLink;
         public string ProjectLink;
+        public List<User> Users;
 
     }
 

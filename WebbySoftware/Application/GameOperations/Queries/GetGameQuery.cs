@@ -29,6 +29,6 @@ namespace WebbySoftware.Application.GameOperations.Queries{
         public string ProjectDescription;
         public List<string> Thumbnails;
         public string ProjectGitLink;
-
+        public List<User> Users;
     }
 }

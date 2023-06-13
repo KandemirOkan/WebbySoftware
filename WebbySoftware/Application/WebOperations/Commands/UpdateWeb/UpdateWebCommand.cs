@@ -44,6 +44,7 @@ namespace WebbySoftware.Application.WebOperations.Commands.UpdateWebApp{
         public List<string> Thumbnails;
         public string ProjectGitLink;
         public string ProjectWebpage;
+        public List<User> Users;
 
     }
 }

@@ -22,7 +22,6 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         }
     }
 
-
     public class WebViewModel{
 
         public string ProjectName;
@@ -30,6 +29,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails;
         public string ProjectGitLink;
         public string ProjectWebpage;
+        public List<User> Users;
 
     }
 }

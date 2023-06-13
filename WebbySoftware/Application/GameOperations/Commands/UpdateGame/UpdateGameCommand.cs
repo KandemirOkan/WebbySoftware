@@ -43,6 +43,7 @@ namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
         public string ProjectDescription;
         public List<string> Thumbnails;
         public string ProjectGitLink;
+        public List<User> Users;
 
     }
 }

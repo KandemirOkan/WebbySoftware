@@ -32,7 +32,6 @@ namespace WebbySoftware.Common{
             CreateMap<UpdateGameModel, GameDev>()
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
             CreateMap<GameDev, GameDevViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()))
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
             CreateMap<GameDev, GameDevViewModel>().ReverseMap();
 
@@ -42,7 +41,6 @@ namespace WebbySoftware.Common{
             CreateMap<UpdateMobileAppModel, MobileDev>()
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
             CreateMap<MobileDev, MobileAppDevViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()))
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
             CreateMap<MobileDev, MobileAppDevViewModel>().ReverseMap();
 
@@ -52,7 +50,6 @@ namespace WebbySoftware.Common{
             CreateMap<UpdateWebAppModel, WebDev>()
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users));
             CreateMap<WebDev, WebViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()))
             .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Select(u => u.Name)));
             CreateMap<WebDev, WebViewModel>().ReverseMap();
 

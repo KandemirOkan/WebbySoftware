@@ -16,6 +16,8 @@ namespace WebbySoftware.Entity.MobileDev {
         public string ProjectGitLink { get; set; }
         public string ProjectLink { get; set; }
 
+        public ICollection<UserMobileDev> UserMobileDevs { get; set; }
+
         public MobileDev(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectLink, string _projectPath) {
 
             //base attributes

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace WebbySoftware.Entity.WebDev {
     public class WebDev : IBaseAtrributes, IProjectModule, IWebDev {
@@ -15,6 +16,8 @@ namespace WebbySoftware.Entity.WebDev {
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
         public string ProjectWebpage { get; set; }
+
+        public ICollection<UserWebDev> UserWebDevs { get; set; }
 
         public WebDev(string _projectName, string _projectDescription, string _projectVersion, List<string> _thumbnails, string _projectGitLink, string _projectWebpage) {
 

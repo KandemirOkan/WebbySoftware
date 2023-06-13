@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using WebbySoftware.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace WebbySoftware.Entity.GameDev
 {
@@ -15,6 +17,8 @@ namespace WebbySoftware.Entity.GameDev
         public string ProjectDescription { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
+
+        public ICollection<UserGameDev> UserGameDevs { get; set; }
 
         public GameDev(string _projectName, string _projectDescription, List<string> _thumbnails, string _projectGitLink, string _projectPath) {
             //base attributes

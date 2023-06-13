@@ -15,6 +15,10 @@ namespace WebbySoftware.DBOperations
 
         public DbSet<User> Users {get;set;}
 
+        public DBSet<UserGameDev> UserGameDevs {get;set;}
+        public DBSet<UserWebDev> UserWebDevs {get;set;}
+        public DBSet<UserMobileDev> UserMobileDevs {get;set;}
+
         int SaveChanges();
     }
 }

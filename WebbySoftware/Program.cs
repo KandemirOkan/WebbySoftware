@@ -13,7 +13,7 @@ namespace WebbySoftware
 			builder.Services.AddControllersWithViews();
 
 			builder.Services.AddDbContext<WebbySoftDbContext>(options =>
-						options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+						options.UseNpgsql(builder.Configuration.GetConnectionString("ElephantSQLConnection")));
 
 			var app = builder.Build();
 

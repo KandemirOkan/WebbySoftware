@@ -23,7 +23,7 @@ namespace WebbySoftware.Entity.GameDev
         public ICollection<UserGameDev> UserGameDevs { get; set; }
 
         public GameDev() {
-
+            
             CreationDate = DateTime.Now;
             UpdateDate = DateTime.Now;
             Active = true;

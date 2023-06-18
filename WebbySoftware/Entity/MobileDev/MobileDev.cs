@@ -25,7 +25,7 @@ namespace WebbySoftware.Entity.MobileDev {
         public ICollection<UserMobileDev> UserMobileDevs { get; set; }
 
         public MobileDev() {
-
+            
             CreationDate = DateTime.Now;
             UpdateDate = DateTime.Now;
             Active = true;

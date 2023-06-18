@@ -20,6 +20,7 @@ namespace WebbySoftware.Entity.GameDev
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
 
+        // Many to Many relationship
         public ICollection<UserGameDev> UserGameDevs { get; set; }
 
         public GameDev() {

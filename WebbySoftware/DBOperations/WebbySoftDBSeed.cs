@@ -40,6 +40,7 @@ public class WebbySoftDBSeed
                     ProjectGitLink = "https://github.com/Hakkology/E-Commerce-Website",
                     ProjectWebpage = "www.haberturk.com"
                 },
+                
                 new WebbySoftware.Entity.WebDev.WebDev{
 
                     ProjectName = "Web2",

@@ -214,6 +214,13 @@ csx/
 ecf/
 rcf/
 
+# Azure configuration files
+/appsettings.json
+/appsettings.Development.json
+/appsettings.Production.json
+/appsettings.Azure.json
+
+
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/

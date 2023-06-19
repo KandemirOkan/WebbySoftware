@@ -25,7 +25,7 @@ public class MobileAppController : ControllerBase
     [HttpGet("[action]")]
     public IActionResult GetMobileAppQuery()
     {
-       GetGameQuery query = new(context,_mapper);
+       GetMobileAppQuery query = new(context,_mapper);
        var result = query.Handle();
        return Ok(result);
     }
@@ -33,7 +33,7 @@ public class MobileAppController : ControllerBase
     [HttpGet("[action]/{id}")]
     public IActionResult GetMobileAppById(int id)
     {
-        GetMobileAppById query = new GetMobileAppById(context,_mapper);
+        GetMobileAppByID query = new GetMobileAppByID(context,_mapper);
         MobileAppIdModel result;
         query.MobileAppID = id;
         GetMobileAppByIdValidator validator = new GetMobileAppByIdValidator();

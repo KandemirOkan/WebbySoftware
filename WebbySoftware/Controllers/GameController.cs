@@ -2,7 +2,7 @@
 using WebbySoftware.Application.GameOperations.Commands.CreateGame;
 using WebbySoftware.Application.GameOperations.Commands.DeleteGame;
 using WebbySoftware.Application.GameOperations.Commands.UpdateGame;
-using WebbySoftware.Application.GameOperations.Quearies;
+using WebbySoftware.Application.GameOperations.Queries;
 using WebbySoftware.DBOperations;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +33,8 @@ public class GameController : ControllerBase
     [HttpGet("[action]/{id}")]
     public IActionResult GetGameById(int id)
     {
-        GetGameById query = new GetGameById(context,_mapper);
-        GameViewIdModel result;
+        GetGameByID query = new GetGameByID(context,_mapper);
+        GameDevIdModel result;
         query.GameID = id;
         GetGameByIdValidator validator = new GetGameByIdValidator();
         validator.ValidateAndThrow(query);

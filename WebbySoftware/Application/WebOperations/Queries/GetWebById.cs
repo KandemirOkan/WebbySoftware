@@ -1,6 +1,5 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entity.WebDev;
 
 namespace WebbySoftware.Application.WebOperations.Queries{
 
@@ -11,6 +10,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         private readonly IMapper _mapper;
 
         public GetWebByID (IWebbySoftDBContext dbContext, IMapper mapper){
+            
             _dbContext = dbContext;
             _mapper = mapper;
         }

@@ -1,7 +1,7 @@
 using AutoMapper;
-using WebbySoftware.Application.WebOperations.Commands.CreateWeb;
+using WebbySoftware.Application.WebOperations.Commands.CreateWebApp;
 using WebbySoftware.Application.WebOperations.Commands.DeleteWeb;
-using WebbySoftware.Application.WebOperations.Commands.UpdateWeb;
+using WebbySoftware.Application.WebOperations.Commands.UpdateWebApp;
 using WebbySoftware.Application.WebOperations.Queries;
 using WebbySoftware.DBOperations;
 using FluentValidation;
@@ -25,7 +25,7 @@ public class WebController : ControllerBase
     [HttpGet("[action]")]
     public IActionResult GetWebQuery()
     {
-       GetGameQuery query = new(context,_mapper);
+       GetWebQuery query = new(context,_mapper);
        var result = query.Handle();
        return Ok(result);
     }
@@ -33,8 +33,8 @@ public class WebController : ControllerBase
     [HttpGet("[action]/{id}")]
     public IActionResult GetWebById(int id)
     {
-        GetWebById query = new GetWebById(context,_mapper);
-        WebViewIdModel result;
+        GetWebByID query = new GetWebByID(context,_mapper);
+        GetWebByIDModel result;
         query.WebAppID = id;
         GetWebByIdValidator validator = new GetWebByIdValidator();
         validator.ValidateAndThrow(query);
@@ -45,22 +45,22 @@ public class WebController : ControllerBase
     [HttpPost("[action]")]
     public IActionResult CreateWeb([FromBody] WebDevModel newWeb)
     {
-        CreateWebCommand command = new CreateWebCommand(context,_mapper);
+        CreateWebAppCommand command = new CreateWebAppCommand(context,_mapper);
         command.Model = newWeb;
-        CreateWebCommandValidator validator = new CreateWebCommandValidator();
+        CreateWebAppCommandValidator validator = new CreateWebAppCommandValidator();
         validator.ValidateAndThrow(command);
         command.Handle();
         return Ok();
     }
 
     [HttpPut("[action]/{id}")]
-    public IActionResult UpdateWeb(int id,[FromBody] UpdateWebModel updateWeb)
+    public IActionResult UpdateWeb(int id,[FromBody] UpdateWebAppModel updateWeb)
     {
-        UpdateWebCommand command = new UpdateWebCommand(context,_mapper);
+        UpdateWebAppCommand command = new UpdateWebAppCommand (context,_mapper);
 
         command.WebAppID = id;
-        command.Model = updateGame;
-        UpdateWebCommandValidator validator = new UpdateWebCommandValidator();
+        command.Model = updateWeb;
+        UpdateWebAppCommandValidator validator = new UpdateWebAppCommandValidator();
         validator.ValidateAndThrow(command);
         command.Handle(); 
         return Ok();
@@ -69,9 +69,9 @@ public class WebController : ControllerBase
     [HttpDelete("[action]/{id}")]
     public IActionResult DeleteWeb(int id)
     {
-        DeleteWebCommand command = new DeleteWebCommand(context);
+        DeleteWebAppCommand command = new DeleteWebAppCommand(context);
         command.WebAppID=id;
-        DeleteWebCommandValidator validator = new DeleteWebCommandValidator();
+        DeleteWebAppCommandValidator validator = new DeleteWebAppCommandValidator();
         validator.ValidateAndThrow(command);
         command.Handle();
         return Ok();

@@ -25,13 +25,12 @@ namespace WebbySoftware
 
 				c.SwaggerDoc(apiVersion, new OpenApiInfo { Title = "Webbysoft", Version = swaggerVersion });
 			});
+			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-			builder.Configuration.AddJsonFile("appsettings.json");
 			builder.Services.AddSingleton(builder.Configuration);
-			builder.Services.AddDbContext<WebbySoftDbContext>(options =>
-				options.UseNpgsql(new WebbySoftConnStr(builder.Configuration).GetConnectionString()));
+			string connStr = new WebbySoftConnStr(builder.Configuration).GetConnectionString();
+			builder.Services.AddDbContext<WebbySoftDbContext>(o => o.UseNpgsql(connStr));
 
-			builder.Services.AddScoped<WebbySoftDbContext>(provider => provider.GetService<WebbySoftDbContext>());
 			builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 			var app = builder.Build();

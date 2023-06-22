@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
 using WebbySoftware.Entity.UserDev;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace WebbySoftware.DBOperations
 {
@@ -54,7 +52,7 @@ namespace WebbySoftware.DBOperations
             modelBuilder.Entity<UserMobileDev>()
                 .HasOne(um => um.Users)
                 .WithMany(m => m.UserMobileDevs)
-                .HasForeignKey(um => um.MobileAppID);
+                .HasForeignKey(um => um.UserID);
 
             modelBuilder.Entity<UserWebDev>()
                 .HasKey(uw => new { uw.UserID, uw.WebAppID });

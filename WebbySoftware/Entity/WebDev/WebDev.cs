@@ -16,7 +16,7 @@ namespace WebbySoftware.Entity.WebDev {
         public int ID { get; set; }
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
-        public List<string> Thumbnails { get; set; }
+        public List<string>? Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
 
         // specific attributes

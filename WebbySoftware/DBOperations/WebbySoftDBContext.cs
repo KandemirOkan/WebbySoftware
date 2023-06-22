@@ -12,11 +12,6 @@ namespace WebbySoftware.DBOperations
 
         private readonly IConfiguration configuration;
 
-        public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options) : base(options)
-        {
-
-        }
-
         public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options, IConfiguration configuration) : base(options)
         {
             this.configuration = configuration;
@@ -40,7 +35,7 @@ namespace WebbySoftware.DBOperations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = configuration.GetConnectionString("DefaultConnection");
+            string connectionString = configuration.GetConnectionString("ElephantSQLConnection");
             if (!string.IsNullOrEmpty(connectionString))
             {
                 optionsBuilder.UseNpgsql(connectionString);

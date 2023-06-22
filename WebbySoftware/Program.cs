@@ -1,9 +1,9 @@
 using System.Reflection;
 using WebbySoftware.DBOperations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using Microsoft.OpenApi.Models;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WebbySoftware
 {
@@ -26,8 +26,11 @@ namespace WebbySoftware
 				c.SwaggerDoc(apiVersion, new OpenApiInfo { Title = "Webbysoft", Version = swaggerVersion });
 			});
 
+			builder.Configuration.AddJsonFile("appsettings.json");
+			builder.Services.AddSingleton(builder.Configuration);
 			builder.Services.AddDbContext<WebbySoftDbContext>(options =>
-						options.UseNpgsql(builder.Configuration.GetConnectionString("ElephantSQLConnection")));
+				options.UseNpgsql(new WebbySoftConnStr(builder.Configuration).GetConnectionString()));
+
 			builder.Services.AddScoped<WebbySoftDbContext>(provider => provider.GetService<WebbySoftDbContext>());
 			builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -47,7 +50,10 @@ namespace WebbySoftware
 				app.UseHsts();
 
 				app.UseSwagger();
-				app.UseSwaggerUI();
+				app.UseSwaggerUI(c =>
+				{
+					c.SwaggerEndpoint("/swagger/0.8/swagger.json", "Webbysoft API");
+				});
 			}
 
 			app.UseAuthentication();

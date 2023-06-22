@@ -32,11 +32,11 @@ namespace WebbySoftware.Application.GameOperations.Commands.CreateGame{
 
     public class GameDevModel{
 
-        public string ProjectName;
-        public string ProjectDescription;
-        public List<string> Thumbnails;
-        public string ProjectGitLink;
-        public List<User> Users;
+        public string ProjectName {get; set;}
+        public string ProjectDescription {get; set;}
+        public List<string> Thumbnails {get; set;}
+        public string ProjectGitLink {get; set;}
+        public List<User> Users {get; set;}
 
     }
 }

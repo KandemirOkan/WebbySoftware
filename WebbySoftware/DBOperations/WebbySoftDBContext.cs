@@ -4,48 +4,31 @@ using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
 using WebbySoftware.Entity.UserDev;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace WebbySoftware.DBOperations
 {
     public class WebbySoftDbContext : DbContext, IWebbySoftDBContext
     {
-
         private readonly IConfiguration configuration;
 
-        public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options, IConfiguration configuration) : base(options)
+        public WebbySoftDbContext(DbContextOptions<WebbySoftDbContext> options)
+            : base(options)
         {
-            this.configuration = configuration;
+            
         }
-        
+
         // Define DbSet properties for each of your models
         public DbSet<GameDev> Games { get; set; }
         public DbSet<MobileDev> MobileApps { get; set; }
         public DbSet<WebDev> WebApps { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserGameDev> UserGameDevs { get; set; }
+        public DbSet<UserWebDev> UserWebDevs { get; set; }
+        public DbSet<UserMobileDev> UserMobileDevs { get; set; }
 
-        public DbSet<User> Users {get;set;}
-
-        public DbSet<UserGameDev> UserGameDevs {get;set;}
-        public DbSet<UserWebDev> UserWebDevs {get;set;}
-        public DbSet<UserMobileDev> UserMobileDevs {get;set;}
-
-        public override int SaveChanges()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            return base.SaveChanges();
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionString = configuration.GetConnectionString("ElephantSQLConnection");
-            if (!string.IsNullOrEmpty(connectionString))
-            {
-                optionsBuilder.UseNpgsql(connectionString);
-            }
-            
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
-
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<UserGameDev>()
                 .HasKey(ug => new { ug.GameID, ug.UserID });
@@ -85,6 +68,8 @@ namespace WebbySoftware.DBOperations
                 .HasOne(uw => uw.WebDevs)
                 .WithMany(w => w.UserWebDevs)
                 .HasForeignKey(uw => uw.WebAppID);
-                }
-            }
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 }

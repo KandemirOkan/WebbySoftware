@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.MobileDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp{
 
@@ -39,11 +40,12 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
 
     public class UpdateMobileAppModel{
 
-        public string ProjectName;
-        public string ProjectDescription;
-        public List<string> Thumbnails;
-        public string ProjectGitLink;
-        public string ProjectLink;
+        public string ProjectName {get; set;}
+        public string ProjectDescription {get; set;}
+        public List<string> Thumbnails {get; set;}
+        public string ProjectGitLink {get; set;}
+        public string ProjectLink {get; set;}
+        public List<User> Users {get; set;}
 
     }
 }

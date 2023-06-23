@@ -2,7 +2,7 @@ using AutoMapper;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.User;
+using WebbySoftware.Entity.UserDev;
 
 using WebbySoftware.Application.GameOperations.Commands.CreateGame;
 using WebbySoftware.Application.GameOperations.Commands.UpdateGame;
@@ -29,29 +29,24 @@ namespace WebbySoftware.Common{
             //Map for games
             CreateMap<GameDevModel, GameDev>();
             CreateMap<UpdateGameModel, GameDev>();
-            CreateMap<GameDev, GameDevViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<GameDev, GameDevViewModel>();
             CreateMap<GameDev, GameDevViewModel>().ReverseMap();
 
             //Map for mobile apps
             CreateMap<MobileAppDevModel, MobileDev>();
             CreateMap<UpdateMobileAppModel, MobileDev>();
-            CreateMap<MobileDev, MobileAppDevViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<MobileDev, MobileAppDevViewModel>();
             CreateMap<MobileDev, MobileAppDevViewModel>().ReverseMap();
 
             //Map for Web apps
             CreateMap<WebDevModel, WebDev>();
             CreateMap<UpdateWebAppModel, WebDev>();
-            CreateMap<WebDev, WebViewModel>()
-            .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => (src.ProjectName).ToString()));
+            CreateMap<WebDev, WebViewModel>();
             CreateMap<WebDev, WebViewModel>().ReverseMap();
 
             //User maps
             CreateMap<CreateUserModel, User>();
-            CreateMap<User, UserViewModel>()
-            .ForMember(dest=>dest.Name, opt=>opt.MapFrom(src => (src.Name).ToString()))
-            .ForMember(dest=>dest.Id, opt=>opt.MapFrom(src => (src.Id)));
+            CreateMap<User, UserViewModel>();
             CreateMap<User, UserViewModel>().ReverseMap();
 
         }

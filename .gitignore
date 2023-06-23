@@ -214,6 +214,10 @@ csx/
 ecf/
 rcf/
 
+# Azure configuration files
+/WebbySoftware/appsettings.json
+
+
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/

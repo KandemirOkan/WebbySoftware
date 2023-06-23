@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.MobileDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
@@ -30,6 +31,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public List<string> Thumbnails;
         public string ProjectGitLink;
         public string ProjectLink;
+        public List<User> Users;
 
     }
 }

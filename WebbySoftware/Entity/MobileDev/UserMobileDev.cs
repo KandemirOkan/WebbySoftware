@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using WebbySoftware.Entity.UserDev;
 
 
-namespace WebbySoftware.Entity.UserMobileDev
+namespace WebbySoftware.Entity.MobileDev
 {
     //Product ile Category'nin bağlantısını sağlamak için üretilen ara sınıf
     public class UserMobileDev

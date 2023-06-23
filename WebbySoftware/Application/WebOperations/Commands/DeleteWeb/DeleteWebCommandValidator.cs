@@ -6,7 +6,10 @@ namespace WebbySoftware.Application.WebOperations.Commands.DeleteWeb
     {
         public DeleteWebAppCommandValidator()
         {
-            RuleFor(x=>x.WebAppID).GreaterThan(0);
+            RuleFor(x => x.WebAppID)
+                .NotEmpty().WithMessage(ErrorMessages.requireID)
+                .Must(ValidationUtilities.IsIntegerValid).WithMessage(ErrorMessages.invalidID)
+                .GreaterThan(0).WithMessage(ErrorMessages.zeroID);
         }
     }
 }

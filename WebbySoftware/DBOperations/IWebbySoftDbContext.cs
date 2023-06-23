@@ -1,7 +1,7 @@
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.User;
+using WebbySoftware.Entity.UserDev;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebbySoftware.DBOperations
@@ -15,9 +15,9 @@ namespace WebbySoftware.DBOperations
 
         public DbSet<User> Users {get;set;}
 
-        public DBSet<UserGameDev> UserGameDevs {get;set;}
-        public DBSet<UserWebDev> UserWebDevs {get;set;}
-        public DBSet<UserMobileDev> UserMobileDevs {get;set;}
+        public DbSet<UserGameDev> UserGameDevs {get;set;}
+        public DbSet<UserWebDev> UserWebDevs {get;set;}
+        public DbSet<UserMobileDev> UserMobileDevs {get;set;}
 
         int SaveChanges();
     }

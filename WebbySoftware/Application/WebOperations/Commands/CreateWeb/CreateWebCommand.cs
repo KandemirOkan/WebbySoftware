@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.WebDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
 
@@ -34,11 +35,12 @@ namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
 
     public class WebDevModel{
 
-        public string ProjectName;
-        public string ProjectDescription;
-        public List<string> Thumbnails;
-        public string ProjectGitLink;
-        public string ProjectWebpage;
+        public string ProjectName {get; set;}
+        public string ProjectDescription {get; set;}
+        public List<string> Thumbnails {get; set;}
+        public string ProjectGitLink {get; set;}
+        public string ProjectWebpage {get; set;}
+        public List<User> Users {get; set;}
 
     }
 

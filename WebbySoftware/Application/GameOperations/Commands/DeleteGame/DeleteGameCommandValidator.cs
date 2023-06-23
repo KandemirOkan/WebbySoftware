@@ -6,7 +6,10 @@ namespace WebbySoftware.Application.GameOperations.Commands.DeleteGame
     {
         public DeleteGameCommandValidator()
         {
-            RuleFor(x=>x.GameID).GreaterThan(0);
+            RuleFor(x => x.GameID)
+                .NotEmpty().WithMessage(ErrorMessages.requireID)
+                .Must(ValidationUtilities.IsIntegerValid).WithMessage(ErrorMessages.invalidID)
+                .GreaterThan(0).WithMessage(ErrorMessages.zeroID);
         }
     }
 }

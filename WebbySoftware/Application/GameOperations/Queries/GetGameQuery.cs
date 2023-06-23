@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
+using WebbySoftware.Entity.UserDev;
 
 namespace WebbySoftware.Application.GameOperations.Queries{
 
@@ -29,6 +30,6 @@ namespace WebbySoftware.Application.GameOperations.Queries{
         public string ProjectDescription;
         public List<string> Thumbnails;
         public string ProjectGitLink;
-
+        public List<User> Users;
     }
 }

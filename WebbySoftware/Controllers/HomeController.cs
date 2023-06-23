@@ -41,7 +41,5 @@ namespace WebbySoftware.Controllers
 		{
 			return View();
 		}
-
-
 	}
 }

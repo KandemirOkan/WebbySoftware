@@ -19,8 +19,9 @@ namespace WebbySoftware.Application.UserOperations.Commands.UpdateUser{
 
         public void Handle(){
 
-            var User = _dbContext.Users.SingleOrDefault(x=>x.Id == UserID);
-            if (User is not null)
+            var user = _dbContext.Users.SingleOrDefault(x=>x.Id == UserID);
+
+            if (user is null)
             {
                 throw new InvalidOperationException("User ID cannot be found");
             }
@@ -30,8 +31,8 @@ namespace WebbySoftware.Application.UserOperations.Commands.UpdateUser{
                 throw new InvalidOperationException ("This user is registered with a different ID Number");
             }
 
-            User = _mapper.Map<UserDev>(Model);
-            _dbContext.Users.Update(User);
+            user = _mapper.Map<UserDev>(Model);
+            _dbContext.Users.Update(user);
             _dbContext.SaveChanges();
         }
     }
@@ -43,6 +44,8 @@ namespace WebbySoftware.Application.UserOperations.Commands.UpdateUser{
             public string Title { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
-
+            public string Photo { get; set; }
+            public string GithubLink { get; set; }
+            public string LinkedINLink { get; set; }
     }
 }

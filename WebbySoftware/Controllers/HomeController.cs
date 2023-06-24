@@ -1,12 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics;
+using WebbySoftware.Application.GameOperations.Queries;
+using WebbySoftware.Application.MobileAppOperations.Queries;
+using WebbySoftware.Application.UserOperations.Queries;
+using WebbySoftware.Application.WebOperations.Queries;
+using WebbySoftware.DBOperations;
 using WebbySoftware.Models;
 
 namespace WebbySoftware.Controllers
 {
 	public class HomeController : Controller
 	{
+
+		private readonly IWebbySoftDBContext _context;
+		private readonly IMapper _mapper;
+
+		public HomeController(IWebbySoftDBContext context, IMapper mapper)
+		{
+			_context = context;
+			_mapper = mapper;
+		}
+		
 		[HttpGet("")]
 		public IActionResult Home()
 		{
@@ -16,7 +32,9 @@ namespace WebbySoftware.Controllers
 		[HttpGet("About")]
 		public IActionResult About()
 		{
-			return View();
+			GetUserQuery query = new GetUserQuery(_context, _mapper);
+			var result = query.Handle();
+			return View(result);
 		}
 
 		[HttpGet("Contact")]
@@ -28,19 +46,25 @@ namespace WebbySoftware.Controllers
 		[HttpGet("Development/GameDevelopment")]
 		public IActionResult GameDevelopment()
 		{
-			return View();
+			GetGameQuery query = new(_context,_mapper);
+			var result = query.Handle();
+			return View("~/Views/Development/GameDevelopment.cshtml", result);
 		}
 
 		[HttpGet("Development/WebDevelopment")]
 		public IActionResult WebDevelopment()
 		{
-			return View();
+			GetWebQuery query = new(_context,_mapper);
+			var result = query.Handle();
+			return View("~/Views/Development/WebDevelopment.cshtml", result);
 		}
 
 		[HttpGet("Development/MobileAppDevelopment")]
 		public IActionResult MobileAppDevelopment()
 		{
-			return View();
+			GetMobileAppQuery query = new(_context,_mapper);
+			var result = query.Handle();
+			return View("~/Views/Development/MobileAppDevelopment.cshtml", result);
 		}
 	}
 }

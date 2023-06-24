@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebbySoftware.DBOperations;
@@ -12,9 +13,11 @@ using WebbySoftware.DBOperations;
 namespace WebbySoftware.Migrations
 {
     [DbContext(typeof(WebbySoftDbContext))]
-    partial class WebbySoftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230624212601_Elephantinit12")]
+    partial class Elephantinit12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,23 +152,11 @@ namespace WebbySoftware.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("GithubLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LinkedINLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Photo")
                         .IsRequired()
                         .HasColumnType("text");
 

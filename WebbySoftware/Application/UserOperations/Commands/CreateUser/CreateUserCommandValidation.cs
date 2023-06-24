@@ -14,6 +14,12 @@ namespace WebbySoftware.Application.UserOperations.Commands.CreateUser
                 RuleFor(x => x.Model.Surname)
                     .NotEmpty().WithMessage(ErrorMessages.uNameError)
                     .MaximumLength(20);
+
+                RuleFor(x=> x.Model.GithubLink)
+                    .MaximumLength(50);
+
+                RuleFor(x=> x.Model.LinkedINLink)
+                    .MaximumLength(100);
             }
         }
     }

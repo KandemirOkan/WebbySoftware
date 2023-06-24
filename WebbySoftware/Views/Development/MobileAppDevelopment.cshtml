@@ -1,7 +1,87 @@
-﻿
+﻿@model List<WebbySoftware.Application.MobileAppOperations.Queries.MobileAppDevViewModel>
+
 @{
     ViewData["Title"] = "MobileAppDevelopment";
 }
 
 <h1>MobileAppDevelopment</h1>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splide@2.4.21/dist/css/splide.min.css">
+
+<div style="height: 50px;"></div>
+<div>
+    @if (Model.Any())
+    {
+        @foreach (var mobileApp in Model) {
+            <div class="project-module container">
+                <!-- Project Name -->
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="project-name">@mobileApp.ProjectName</h1>
+                    </div>
+                </div>
+
+                <!-- Project Description -->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="project-description">@mobileApp.ProjectDescription</p>
+                    </div>
+                </div>
+
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-12">
+                        <div id="thumbnail-slider" class="splide">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    @foreach (var thumbnail in mobileApp.Thumbnails) {
+                                        <li class="splide__slide">
+                                            <img src="@thumbnail">
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Link -->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="github-link"><a href="@mobileApp.ProjectGitLink">Project GitHub Link</a></p>
+                    </div>
+                </div>
+
+                <!-- Project Download Page -->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="download-link"><a href="@mobileApp.ProjectLink">Project Download Page</a></p>
+                    </div>
+                </div>
+
+                <!-- List of Users -->
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-of-users">
+                            @foreach (var user in mobileApp.Users) {
+                                <li>@user.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h2>No Mobile Apps found, stay tuned for updates!</h2>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/splide@2.4.21/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#thumbnail-slider').mount();
+});
+</script>

@@ -1,7 +1,87 @@
-﻿
+﻿@model List<WebbySoftware.Application.WebOperations.Queries.WebViewModel>
+
 @{
     ViewData["Title"] = "WebDevelopment";
 }
 
 <h1>WebDevelopment</h1>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splide@2.4.21/dist/css/splide.min.css">
+
+<div style="height: 50px;"></div>
+<div>
+    @if (Model.Any())
+    {
+        @foreach (var webApp in Model) {
+        <div class="project-module container">
+            <!-- Project Name -->
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="project-name">@webApp.ProjectName</h1>
+                </div>
+            </div>
+
+            <!-- Project Description -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="project-description">@webApp.ProjectDescription</p>
+                </div>
+            </div>
+
+            <!-- Slider -->
+            <div class="row">
+                <div class="col-12">
+                    <div id="thumbnail-slider" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                @foreach (var thumbnail in webApp.Thumbnails) {
+                                    <li class="splide__slide">
+                                        <img src="@thumbnail">
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Link -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="github-link"><a href="@webApp.ProjectGitLink">Project GitHub Link</a></p>
+                </div>
+            </div>
+
+            <!-- Project Web Page -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="web-link"><a href="@webApp.ProjectWebpage">Project Web Page</a></p>
+                </div>
+            </div>
+
+
+            <!-- List of Users -->
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-of-users">
+                        @foreach (var user in webApp.Users) {
+                            <li>@user.Name</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+    }
+    else{
+        <h2>No Games found, stay tuned for updates!</h2>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/splide@2.4.21/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#thumbnail-slider').mount();
+});
+</script>

@@ -55,6 +55,7 @@ public class WebbySoftDBSeed
                 {
                     Name = "Hakan",
                     Surname = "Yildiz",
+                    Title = "Co-founder",
                     Email = "yildizhakan88@gmail.com",
                     Password = "1234"
                 }

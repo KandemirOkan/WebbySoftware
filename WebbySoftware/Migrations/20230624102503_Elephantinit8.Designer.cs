@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebbySoftware.DBOperations;
@@ -12,9 +13,11 @@ using WebbySoftware.DBOperations;
 namespace WebbySoftware.Migrations
 {
     [DbContext(typeof(WebbySoftDbContext))]
-    partial class WebbySoftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230624102503_Elephantinit8")]
+    partial class Elephantinit8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("GameDevs");
+                    b.ToTable("UserGameDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.MobileDev.MobileDev", b =>
@@ -134,7 +137,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("MobileDevs");
+                    b.ToTable("UserMobileDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.User.UserDev", b =>
@@ -188,7 +191,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("WebAppID");
 
-                    b.ToTable("WebDevs");
+                    b.ToTable("UserWebDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.WebDev.WebDev", b =>
@@ -238,13 +241,13 @@ namespace WebbySoftware.Migrations
             modelBuilder.Entity("WebbySoftware.Entity.GameDev.UserGameDev", b =>
                 {
                     b.HasOne("WebbySoftware.Entity.GameDev.GameDev", "GameDevs")
-                        .WithMany("GameDevs")
+                        .WithMany("UserGameDevs")
                         .HasForeignKey("GameID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebbySoftware.Entity.User.UserDev", "Users")
-                        .WithMany("GameDevs")
+                        .WithMany("UserGameDevs")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -257,13 +260,13 @@ namespace WebbySoftware.Migrations
             modelBuilder.Entity("WebbySoftware.Entity.MobileDev.UserMobileDev", b =>
                 {
                     b.HasOne("WebbySoftware.Entity.MobileDev.MobileDev", "MobileDevs")
-                        .WithMany("MobileDevs")
+                        .WithMany("UserMobileDevs")
                         .HasForeignKey("MobileAppID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebbySoftware.Entity.User.UserDev", "Users")
-                        .WithMany("MobileDevs")
+                        .WithMany("UserMobileDevs")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -276,13 +279,13 @@ namespace WebbySoftware.Migrations
             modelBuilder.Entity("WebbySoftware.Entity.WebDev.UserWebDev", b =>
                 {
                     b.HasOne("WebbySoftware.Entity.User.UserDev", "Users")
-                        .WithMany("WebDevs")
+                        .WithMany("UserWebDevs")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebbySoftware.Entity.WebDev.WebDev", "WebDevs")
-                        .WithMany("WebDevs")
+                        .WithMany("UserWebDevs")
                         .HasForeignKey("WebAppID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -294,26 +297,26 @@ namespace WebbySoftware.Migrations
 
             modelBuilder.Entity("WebbySoftware.Entity.GameDev.GameDev", b =>
                 {
-                    b.Navigation("GameDevs");
+                    b.Navigation("UserGameDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.MobileDev.MobileDev", b =>
                 {
-                    b.Navigation("MobileDevs");
+                    b.Navigation("UserMobileDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.User.UserDev", b =>
                 {
-                    b.Navigation("GameDevs");
+                    b.Navigation("UserGameDevs");
 
-                    b.Navigation("MobileDevs");
+                    b.Navigation("UserMobileDevs");
 
-                    b.Navigation("WebDevs");
+                    b.Navigation("UserWebDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.WebDev.WebDev", b =>
                 {
-                    b.Navigation("WebDevs");
+                    b.Navigation("UserWebDevs");
                 });
 #pragma warning restore 612, 618
         }

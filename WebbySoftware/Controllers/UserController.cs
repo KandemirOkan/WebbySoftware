@@ -1,14 +1,15 @@
 using AutoMapper;
 using WebbySoftware.Application.UserOperations.Commands.CreateToken;
 using WebbySoftware.Application.UserOperations.Commands.CreateUser;
+using WebbySoftware.Application.UserOperations.Commands.DeleteUser;
+using WebbySoftware.Application.UserOperations.Commands.UpdateUser;
 using WebbySoftware.Application.UserOperations.Commands.RefreshToken;
 using WebbySoftware.Application.UserOperations.Queries;
 using WebbySoftware.DBOperations;
 using WebbySoftware.TokenOperations;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using static WebbySoftware.Application.UserOperations.Commands.CreateUser.CreateUserCommand;
+
 
 namespace WebbySoftware.Controllers.UserController;
 
@@ -27,7 +28,7 @@ public class UserController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("[action]")]
+    [HttpGet("Contact/[action]")]
     public IActionResult GetAllUsers()
     {
         GetUserQuery query = new GetUserQuery(_context, _mapper);
@@ -35,7 +36,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("[action]")]
+    [HttpPost("Contact/[action]")]
     public IActionResult CreateUser([FromBody] CreateUserModel newUser)
     {
         CreateUserCommand command = new(_context,_mapper);
@@ -43,8 +44,27 @@ public class UserController : ControllerBase
         command.Handle();
         return Ok();
     }
+
+    [HttpPost("Contact/[action]")]
+    public IActionResult UpdateUser(int id, [FromBody] UpdateUserModel newUser)
+    {
+        UpdateUserCommand command = new(_context,_mapper);
+        command.UserID = id;
+        command.Model = newUser;
+        command.Handle();
+        return Ok();
+    }
+
+    [HttpDelete("Contact/[action]/{id}")]
+    public IActionResult DeleteUser(int id)
+    {
+        DeleteUserCommand command = new(_context);
+        command.UserID=id;
+        command.Handle();
+        return Ok();
+    }
     
-    [HttpPost("[action]")]
+    [HttpPost("Contact/[action]/{id}")]
     public ActionResult<Token> CreateToken([FromBody] CreateTokenModel newToken)
     {
         CreateTokenCommand command = new(_context, _mapper, _configuration);
@@ -53,7 +73,7 @@ public class UserController : ControllerBase
         return token;
     }
 
-    [HttpGet("[action]")]
+    [HttpGet("Contact/[action]")]
     public ActionResult<Token> RefreshToken([FromQuery] string token)
     {
         RefreshTokenCommand command = new(_context, _configuration);

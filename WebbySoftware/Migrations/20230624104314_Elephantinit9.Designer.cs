@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebbySoftware.DBOperations;
@@ -12,9 +13,11 @@ using WebbySoftware.DBOperations;
 namespace WebbySoftware.Migrations
 {
     [DbContext(typeof(WebbySoftDbContext))]
-    partial class WebbySoftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230624104314_Elephantinit9")]
+    partial class Elephantinit9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("GameDevs");
+                    b.ToTable("UserGameDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.MobileDev.MobileDev", b =>
@@ -134,7 +137,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("MobileDevs");
+                    b.ToTable("UserMobileDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.User.UserDev", b =>
@@ -188,7 +191,7 @@ namespace WebbySoftware.Migrations
 
                     b.HasIndex("WebAppID");
 
-                    b.ToTable("WebDevs");
+                    b.ToTable("UserWebDevs");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.WebDev.WebDev", b =>

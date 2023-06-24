@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.MobileDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp{
 
@@ -28,7 +28,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp
             MobileApp = _mapper.Map<MobileDev>(Model);
             _dbContext.MobileApps.Add(MobileApp);
             _dbContext.SaveChanges();
-    }
+        }
 
     }
 
@@ -40,7 +40,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<UserDev> Users {get; set;}
 
     }
 

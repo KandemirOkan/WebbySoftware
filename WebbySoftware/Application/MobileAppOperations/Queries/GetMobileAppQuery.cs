@@ -1,7 +1,8 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
+using Microsoft.EntityFrameworkCore;
 using WebbySoftware.Entity.MobileDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
@@ -17,7 +18,11 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
         public List<MobileAppDevViewModel> Handle(){
 
-            var MobileAppList = _dbContext.MobileApps.OrderBy(x=>x.ID).ToList<MobileDev>();
+            var MobileAppList = _dbContext.MobileApps
+                .Include(g => g.MobileDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .ToList();
             return _mapper.Map<List<MobileAppDevViewModel>>(MobileAppList);
 
         }
@@ -26,12 +31,17 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
     public class MobileAppDevViewModel{
 
-        public string ProjectName;
-        public string ProjectDescription;
-        public List<string> Thumbnails;
-        public string ProjectGitLink;
-        public string ProjectLink;
-        public List<User> Users;
+        public string ProjectName{get; set;}
+        public string ProjectDescription{get; set;}
+        public List<string> Thumbnails{get; set;}
+        public string ProjectGitLink{get; set;}
+        public string ProjectLink{get; set;}
+        public List<UserMobileDevViewModel> Users{get; set;}
 
+    }
+    public class UserMobileDevViewModel
+    {
+        public string Name { get; set; }
+        // Add other properties specific to the UserDevViewModel if needed
     }
 }

@@ -4,23 +4,30 @@ using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
 using System.Collections.Generic;
 
-namespace WebbySoftware.Entity.UserDev
+namespace WebbySoftware.Entity.User
 {
-    public class User
+    public class UserDev
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
         public string Title { get; set; }
+        public string Surname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime? RefreshTokenExpireDate { get; set; }
         public string? RefreshToken { get; set; }
 
-        public ICollection<UserGameDev> UserGameDevs { get; set; }
-        public ICollection<UserWebDev> UserWebDevs { get; set; }
-        public ICollection<UserMobileDev> UserMobileDevs { get; set; }
+        public ICollection<UserGameDev> GameDevs { get; set; }
+        public ICollection<UserWebDev> WebDevs { get; set; }
+        public ICollection<UserMobileDev> MobileDevs { get; set; }
+
+        public UserDev()
+        {
+            GameDevs = new List<UserGameDev>();
+            WebDevs = new List<UserWebDev>();
+            MobileDevs = new List<UserMobileDev>();
+        }
 
     }
 }

@@ -23,7 +23,7 @@ namespace WebbySoftware.Entity.WebDev {
         public string ProjectWebpage { get; set; }
 
         // Many to many relationship
-        public ICollection<UserWebDev> UserWebDevs { get; set; }
+        public ICollection<UserWebDev> WebDevs { get; set; }
 
         public WebDev() {
 
@@ -31,6 +31,8 @@ namespace WebbySoftware.Entity.WebDev {
             UpdateDate= DateTime.Now;
             Active = true;
             Deleted = false;
+
+            WebDevs = new List<UserWebDev>();
         }
     }
 }

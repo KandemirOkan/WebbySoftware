@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 using System.Diagnostics;
 using WebbySoftware.Models;
 
@@ -6,37 +7,37 @@ namespace WebbySoftware.Controllers
 {
 	public class HomeController : Controller
 	{
-		[Route("")]
+		[HttpGet("")]
 		public IActionResult Home()
 		{
 			return View();
 		}
 
-		[Route("About")]
+		[HttpGet("About")]
 		public IActionResult About()
 		{
 			return View();
 		}
 
-		[Route("Contact")]
+		[HttpGet("Contact")]
 		public IActionResult Contact()
 		{
 			return View();
 		}
 
-		[Route("Development/GameDevelopment")]
+		[HttpGet("Development/GameDevelopment")]
 		public IActionResult GameDevelopment()
 		{
 			return View();
 		}
 
-		[Route("Development/WebDevelopment")]
+		[HttpGet("Development/WebDevelopment")]
 		public IActionResult WebDevelopment()
 		{
 			return View();
 		}
 
-		[Route("Development/MobileAppDevelopment")]
+		[HttpGet("Development/MobileAppDevelopment")]
 		public IActionResult MobileAppDevelopment()
 		{
 			return View();

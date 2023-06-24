@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Entity.GameDev
 {
@@ -8,6 +8,6 @@ namespace WebbySoftware.Entity.GameDev
         public int GameID { get; set; }
         public int UserID { get; set; }
         public virtual GameDev GameDevs { get; set; }
-        public virtual User Users { get; set; }  
+        public virtual UserDev Users { get; set; }  
     }
 }

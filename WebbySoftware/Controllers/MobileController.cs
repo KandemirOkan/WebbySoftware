@@ -22,7 +22,7 @@ public class MobileAppController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("[action]")]
+    [HttpGet("Development/MobileAppDevelopment/[action]")]
     public IActionResult GetMobileAppQuery()
     {
        GetMobileAppQuery query = new(context,_mapper);
@@ -30,7 +30,7 @@ public class MobileAppController : ControllerBase
        return Ok(result);
     }
 
-    [HttpGet("[action]/{id}")]
+    [HttpGet("Development/MobileAppDevelopment/[action]/{id}")]
     public IActionResult GetMobileAppById(int id)
     {
         GetMobileAppByID query = new GetMobileAppByID(context,_mapper);
@@ -42,7 +42,7 @@ public class MobileAppController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("[action]")]
+    [HttpPost("Development/MobileAppDevelopment/[action]")]
     public IActionResult CreateMobileApp([FromBody] MobileAppDevModel newMobileApp)
     {
         CreateMobileAppCommand command = new CreateMobileAppCommand(context,_mapper);
@@ -53,7 +53,7 @@ public class MobileAppController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("[action]/{id}")]
+    [HttpPut("Development/MobileAppDevelopment/[action]/{id}")]
     public IActionResult UpdateMobileApp(int id,[FromBody] UpdateMobileAppModel updateMobileApp)
     {
         UpdateMobileAppCommand command = new UpdateMobileAppCommand(context,_mapper);
@@ -66,7 +66,7 @@ public class MobileAppController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("[action]/{id}")]
+    [HttpDelete("Development/MobileAppDevelopment/[action]/{id}")]
     public IActionResult DeleteMobileApp(int id)
     {
         DeleteMobileAppCommand command = new DeleteMobileAppCommand(context);

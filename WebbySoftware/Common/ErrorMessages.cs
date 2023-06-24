@@ -15,6 +15,7 @@ namespace WebbySoftware
         public const string pDescError = "Project Description is required.";
         public const string pGitError = "Project Git Link is required.";
         public const string ThumbError = "The maximum number of thumbnails is 5.";
+        public const string uNameError = "User Name/Surname is required";
     }
 }
 

@@ -1,6 +1,6 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.WebOperations.Queries{
 
@@ -32,7 +32,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
-        public List<User> Users {get; set;}
+        public List<UserDev> Users {get; set;}
 
     }
 }

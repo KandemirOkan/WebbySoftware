@@ -22,7 +22,7 @@ namespace WebbySoftware.Entity.MobileDev {
         // specific attributes
         public string ProjectLink { get; set; }
 
-        public ICollection<UserMobileDev> UserMobileDevs { get; set; }
+        public ICollection<UserMobileDev> MobileDevs { get; set; }
 
         public MobileDev() {
             
@@ -30,6 +30,8 @@ namespace WebbySoftware.Entity.MobileDev {
             UpdateDate = DateTime.Now;
             Active = true;
             Deleted = false;
+
+            MobileDevs = new List<UserMobileDev>();
         }
     }
 }

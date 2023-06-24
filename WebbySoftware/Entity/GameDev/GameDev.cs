@@ -21,7 +21,7 @@ namespace WebbySoftware.Entity.GameDev
         public string ProjectGitLink { get; set; }
 
         // Many to Many relationship
-        public ICollection<UserGameDev> UserGameDevs { get; set; }
+        public ICollection<UserGameDev> GameDevs { get; set; }
 
         public GameDev() {
             
@@ -29,6 +29,8 @@ namespace WebbySoftware.Entity.GameDev
             UpdateDate = DateTime.Now;
             Active = true;
             Deleted = false;
+
+            GameDevs = new List<UserGameDev>();
         }
     }
 }

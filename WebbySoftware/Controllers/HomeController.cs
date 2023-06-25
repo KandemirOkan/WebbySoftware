@@ -37,8 +37,8 @@ namespace WebbySoftware.Controllers
 			return View(result);
 		}
 
-		[HttpGet("Contact")]
-		public IActionResult Contact()
+		[HttpGet("Team")]
+		public IActionResult Team()
 		{
 			return View();
 		}

@@ -73,11 +73,13 @@ public class WebbySoftDBSeed
 
             var game2 = new GameDev
             {
-                ProjectName = "Game2",
-                ProjectDescription = "Lorem Ipsum2",
+                ProjectName = "Stack the Cubes",
+                ProjectDescription = "Runner Game made by Unity",
                 ProjectGitLink = "https://github.com/Hakkology/Stack-the-Cubes",
                 Thumbnails = new List<string> {
-
+                    "~/assets/img/thumbnails/GameDev/StackTheCubes/STC1.png",
+                    "~/assets/img/thumbnails/GameDev/StackTheCubes/STC2.png",
+                    "~/assets/img/thumbnails/GameDev/StackTheCubes/STC3.png",
                 },
                 GameDevs = new List<UserGameDev>
                 {

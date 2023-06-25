@@ -9,10 +9,11 @@
 <div class="jumbotron text-left mb-4">
     <h1>Welcome to the Web App Development Page</h1>
     <p>Please find the projects developed by our team as follows.</p>
+    <hr>
 </div>
 
 
-<div class="container mt-5">
+<div class="container mt-5 border p-3">
     @if (Model.Any())
     {
         @foreach (var webApp in Model) {
@@ -32,7 +33,7 @@
                     <h5>Project Participants:</h5>
                     <ul class="list-of-users">
                         @foreach (var user in webApp.Users) {
-                            <li>@user.Name</li>
+                            <li>@user.Name @user.Surname</li>
                         }
                     </ul>
                 </div>
@@ -74,7 +75,9 @@
     }
     else
     {
-        <h2>No Games found, stay tuned for updates!</h2>
+        <h2>No Web Applications found, stay tuned for updates!</h2>
     }
+<br>
 </div>
+<br>
 

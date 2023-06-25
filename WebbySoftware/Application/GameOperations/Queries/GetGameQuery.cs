@@ -41,6 +41,7 @@ namespace WebbySoftware.Application.GameOperations.Queries{
     public class UserGameDevViewModel
     {
         public string Name { get; set; }
-        // Add other properties specific to the UserDevViewModel if needed
+        public string Surname { get; set; }
+
     }
 }

@@ -48,10 +48,17 @@ namespace WebbySoftware.Common{
             //User maps
             CreateMap<CreateUserModel, UserDev>();
             CreateMap<UpdateUserModel, UserDev>();
+
             CreateMap<UserDev, UserViewModel>();
+
             CreateMap<UserDev, UserGameDevViewModel>();
+            CreateMap<UserDev, UserGameDevViewIdModel>();
+
             CreateMap<UserDev, UserMobileDevViewModel>();
+            CreateMap<UserDev, UserMobileDevViewIdModel>();
+
             CreateMap<UserDev, UserWebDevViewModel>();
+            CreateMap<UserDev, UserWebDevViewIdModel>();
         }
     }
 }

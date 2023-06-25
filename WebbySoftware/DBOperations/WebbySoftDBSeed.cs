@@ -26,7 +26,10 @@ public class WebbySoftDBSeed
                 Surname = "Yildiz",
                 Title = "Co-founder",
                 Email = "yildizhakan88@gmail.com",
-                Password = "1234"
+                Password = "1234",
+                Photo = "~/assets/img/team/HakanYıldız.png",
+                GithubLink = "https://github.com/Hakkology",
+                LinkedINLink = "https://www.linkedin.com/in/hakan-yildiz-029845132/"
             };
 
             var okan = new UserDev
@@ -35,7 +38,10 @@ public class WebbySoftDBSeed
                 Surname = "Kandemir",
                 Title = "Co-founder",
                 Email = "okan-kan@hotmail.com",
-                Password = "1234"
+                Password = "1234",
+                Photo = "~/assets/img/team/OkanKandemir.png",
+                GithubLink = "https://github.com/KandemirOkan",
+                LinkedINLink = "https://www.linkedin.com/in/okan-kandemir-77427014b/"
             };
 
             context.Users.AddRange(hakan, okan);
@@ -46,9 +52,16 @@ public class WebbySoftDBSeed
 
             var game1 = new GameDev
             {
-                ProjectName = "Game1",
-                ProjectDescription = "Lorem Ipsum",
+                ProjectName = "OpenGL-Framework",
+                ProjectDescription = "OpenGL-Framework Description",
                 ProjectGitLink = "https://github.com/Hakkology/OpenGL-Framework",
+                Thumbnails = new List<string>
+                {
+                    "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL1.png",
+                    "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL2.png",
+                    "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL4.png",
+                    "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL5.png"
+                },
                 GameDevs = new List<UserGameDev>
                 {
                     new UserGameDev
@@ -63,6 +76,9 @@ public class WebbySoftDBSeed
                 ProjectName = "Game2",
                 ProjectDescription = "Lorem Ipsum2",
                 ProjectGitLink = "https://github.com/Hakkology/Stack-the-Cubes",
+                Thumbnails = new List<string> {
+
+                },
                 GameDevs = new List<UserGameDev>
                 {
                     new UserGameDev

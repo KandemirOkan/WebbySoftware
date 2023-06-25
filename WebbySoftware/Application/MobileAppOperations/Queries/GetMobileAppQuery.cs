@@ -42,6 +42,6 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
     public class UserMobileDevViewModel
     {
         public string Name { get; set; }
-        // Add other properties specific to the UserDevViewModel if needed
+        public string Surname { get; set; }
     }
 }

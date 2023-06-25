@@ -32,13 +32,19 @@ namespace WebbySoftware.Controllers
 		[HttpGet("About")]
 		public IActionResult About()
 		{
+			return View();
+		}
+
+		[HttpGet("Team")]
+		public IActionResult Team()
+		{
 			GetUserQuery query = new GetUserQuery(_context, _mapper);
 			var result = query.Handle();
 			return View(result);
 		}
 
-		[HttpGet("Team")]
-		public IActionResult Team()
+		[HttpGet("Contact")]
+		public IActionResult Contact()
 		{
 			return View();
 		}

@@ -32,7 +32,7 @@
                     <h5>Project Participants:</h5>
                     <ul class="list-of-users">
                         @foreach (var user in mobileApp.Users) {
-                            <li>@user.Name @user.Surname</li>
+                            <li><a href="@Url.Action("Team", "Home")">@user.Name @user.Surname</a></li>
                         }
                     </ul>
                 </div>

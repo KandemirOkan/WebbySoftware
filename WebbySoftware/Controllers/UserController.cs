@@ -28,7 +28,7 @@ public class UserController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("Contact/[action]")]
+    [HttpGet("Team/[action]")]
     public IActionResult GetAllUsers()
     {
         GetUserQuery query = new GetUserQuery(_context, _mapper);
@@ -36,7 +36,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("Contact/[action]")]
+    [HttpPost("Team/[action]")]
     public IActionResult CreateUser([FromBody] CreateUserModel newUser)
     {
         CreateUserCommand command = new(_context,_mapper);
@@ -45,7 +45,7 @@ public class UserController : ControllerBase
         return Ok();
     }
 
-    [HttpPost("Contact/[action]")]
+    [HttpPost("Team/[action]")]
     public IActionResult UpdateUser(int id, [FromBody] UpdateUserModel newUser)
     {
         UpdateUserCommand command = new(_context,_mapper);
@@ -55,7 +55,7 @@ public class UserController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("Contact/[action]/{id}")]
+    [HttpDelete("Team/[action]/{id}")]
     public IActionResult DeleteUser(int id)
     {
         DeleteUserCommand command = new(_context);
@@ -64,7 +64,7 @@ public class UserController : ControllerBase
         return Ok();
     }
     
-    [HttpPost("Contact/[action]/{id}")]
+    [HttpPost("Team/[action]/{id}")]
     public ActionResult<Token> CreateToken([FromBody] CreateTokenModel newToken)
     {
         CreateTokenCommand command = new(_context, _mapper, _configuration);
@@ -73,7 +73,7 @@ public class UserController : ControllerBase
         return token;
     }
 
-    [HttpGet("Contact/[action]")]
+    [HttpGet("Team/[action]")]
     public ActionResult<Token> RefreshToken([FromQuery] string token)
     {
         RefreshTokenCommand command = new(_context, _configuration);

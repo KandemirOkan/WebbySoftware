@@ -40,6 +40,10 @@ namespace WebbySoftware.Migrations
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
 
+                    b.Property<List<string>>("GameTags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
                     b.Property<string>("ProjectDescription")
                         .IsRequired()
                         .HasColumnType("text");
@@ -51,10 +55,6 @@ namespace WebbySoftware.Migrations
                     b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<List<string>>("Tags")
-                        .IsRequired()
-                        .HasColumnType("text[]");
 
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");
@@ -99,6 +99,10 @@ namespace WebbySoftware.Migrations
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
 
+                    b.Property<List<string>>("MobileAppTags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
                     b.Property<string>("ProjectDescription")
                         .IsRequired()
                         .HasColumnType("text");
@@ -114,10 +118,6 @@ namespace WebbySoftware.Migrations
                     b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<List<string>>("Tags")
-                        .IsRequired()
-                        .HasColumnType("text[]");
 
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");
@@ -244,15 +244,15 @@ namespace WebbySoftware.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<List<string>>("Tags")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<List<string>>("WebTags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
 
                     b.HasKey("ID");
 

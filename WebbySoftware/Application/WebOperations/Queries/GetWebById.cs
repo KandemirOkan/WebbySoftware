@@ -38,7 +38,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
-        public List<string> Tags { get; set; }
+        public List<string> WebTags { get; set; }
         public List<UserDev> Users {get; set;}
 
     }

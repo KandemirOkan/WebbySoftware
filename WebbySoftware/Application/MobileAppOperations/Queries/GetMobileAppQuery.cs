@@ -32,7 +32,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
             var mobileAppList = _dbContext.MobileApps
                 .Include(g => g.MobileDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.Tags.Contains(searchedTag)) // Filter mobile apps based on the searched tag
+                .Where(g => g.MobileAppTags.Contains(searchedTag)) // Filter mobile apps based on the searched tag
                 .OrderBy(g => g.ID)
                 .ToList();
 
@@ -49,7 +49,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public List<string> Thumbnails{get; set;}
         public string ProjectGitLink{get; set;}
         public string ProjectLink{get; set;}
-        public List<string> Tags { get; set; }
+        public List<string> MobileAppTags { get; set; }
         public List<UserMobileDevViewModel> Users{get; set;}
 
     }

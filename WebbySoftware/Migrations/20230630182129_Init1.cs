@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace WebbySoftware.Migrations
 {
     /// <inheritdoc />
-    public partial class Elephantinit2 : Migration
+    public partial class Init1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,14 +19,15 @@ namespace WebbySoftware.Migrations
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Active = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<bool>(type: "boolean", nullable: false),
                     ProjectName = table.Column<string>(type: "text", nullable: false),
                     ProjectDescription = table.Column<string>(type: "text", nullable: false),
-                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: false),
-                    ProjectGitLink = table.Column<string>(type: "text", nullable: false)
+                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: true),
+                    ProjectGitLink = table.Column<string>(type: "text", nullable: false),
+                    GameTags = table.Column<List<string>>(type: "text[]", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,14 +40,15 @@ namespace WebbySoftware.Migrations
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Active = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<bool>(type: "boolean", nullable: false),
                     ProjectName = table.Column<string>(type: "text", nullable: false),
                     ProjectDescription = table.Column<string>(type: "text", nullable: false),
-                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: true),
                     ProjectGitLink = table.Column<string>(type: "text", nullable: false),
+                    MobileAppTags = table.Column<List<string>>(type: "text[]", nullable: false),
                     ProjectLink = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -61,10 +63,14 @@ namespace WebbySoftware.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    Title = table.Column<string>(type: "text", nullable: false),
                     Surname = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
-                    RefreshTokenExpireDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Photo = table.Column<string>(type: "text", nullable: false),
+                    GithubLink = table.Column<string>(type: "text", nullable: false),
+                    LinkedINLink = table.Column<string>(type: "text", nullable: false),
+                    RefreshTokenExpireDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     RefreshToken = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -78,14 +84,15 @@ namespace WebbySoftware.Migrations
                 {
                     ID = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Active = table.Column<bool>(type: "boolean", nullable: false),
                     Deleted = table.Column<bool>(type: "boolean", nullable: false),
                     ProjectName = table.Column<string>(type: "text", nullable: false),
                     ProjectDescription = table.Column<string>(type: "text", nullable: false),
-                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Thumbnails = table.Column<List<string>>(type: "text[]", nullable: true),
                     ProjectGitLink = table.Column<string>(type: "text", nullable: false),
+                    WebTags = table.Column<List<string>>(type: "text[]", nullable: false),
                     ProjectWebpage = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -94,7 +101,7 @@ namespace WebbySoftware.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserGameDevs",
+                name: "GameDevs",
                 columns: table => new
                 {
                     GameID = table.Column<int>(type: "integer", nullable: false),
@@ -102,15 +109,15 @@ namespace WebbySoftware.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserGameDevs", x => new { x.GameID, x.UserID });
+                    table.PrimaryKey("PK_GameDevs", x => new { x.GameID, x.UserID });
                     table.ForeignKey(
-                        name: "FK_UserGameDevs_Games_GameID",
+                        name: "FK_GameDevs_Games_GameID",
                         column: x => x.GameID,
                         principalTable: "Games",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserGameDevs_Users_UserID",
+                        name: "FK_GameDevs_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -118,7 +125,7 @@ namespace WebbySoftware.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserMobileDevs",
+                name: "MobileDevs",
                 columns: table => new
                 {
                     MobileAppID = table.Column<int>(type: "integer", nullable: false),
@@ -126,15 +133,15 @@ namespace WebbySoftware.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserMobileDevs", x => new { x.MobileAppID, x.UserID });
+                    table.PrimaryKey("PK_MobileDevs", x => new { x.MobileAppID, x.UserID });
                     table.ForeignKey(
-                        name: "FK_UserMobileDevs_MobileApps_MobileAppID",
+                        name: "FK_MobileDevs_MobileApps_MobileAppID",
                         column: x => x.MobileAppID,
                         principalTable: "MobileApps",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserMobileDevs_Users_UserID",
+                        name: "FK_MobileDevs_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -142,7 +149,7 @@ namespace WebbySoftware.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserWebDevs",
+                name: "WebDevs",
                 columns: table => new
                 {
                     WebAppID = table.Column<int>(type: "integer", nullable: false),
@@ -150,15 +157,15 @@ namespace WebbySoftware.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserWebDevs", x => new { x.UserID, x.WebAppID });
+                    table.PrimaryKey("PK_WebDevs", x => new { x.UserID, x.WebAppID });
                     table.ForeignKey(
-                        name: "FK_UserWebDevs_Users_UserID",
+                        name: "FK_WebDevs_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserWebDevs_WebApps_WebAppID",
+                        name: "FK_WebDevs_WebApps_WebAppID",
                         column: x => x.WebAppID,
                         principalTable: "WebApps",
                         principalColumn: "ID",
@@ -166,18 +173,18 @@ namespace WebbySoftware.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserGameDevs_UserID",
-                table: "UserGameDevs",
+                name: "IX_GameDevs_UserID",
+                table: "GameDevs",
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserMobileDevs_UserID",
-                table: "UserMobileDevs",
+                name: "IX_MobileDevs_UserID",
+                table: "MobileDevs",
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserWebDevs_WebAppID",
-                table: "UserWebDevs",
+                name: "IX_WebDevs_WebAppID",
+                table: "WebDevs",
                 column: "WebAppID");
         }
 
@@ -185,13 +192,13 @@ namespace WebbySoftware.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserGameDevs");
+                name: "GameDevs");
 
             migrationBuilder.DropTable(
-                name: "UserMobileDevs");
+                name: "MobileDevs");
 
             migrationBuilder.DropTable(
-                name: "UserWebDevs");
+                name: "WebDevs");
 
             migrationBuilder.DropTable(
                 name: "Games");

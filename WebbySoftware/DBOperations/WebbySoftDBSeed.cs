@@ -62,6 +62,7 @@ public class WebbySoftDBSeed
                     "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL4.png",
                     "~/assets/img/thumbnails/GameDev/OpenGL-Framework/OpenGL5.png"
                 },
+                GameTags = "opengl", "c++",
                 GameDevs = new List<UserGameDev>
                 {
                     new UserGameDev
@@ -81,6 +82,7 @@ public class WebbySoftDBSeed
                     "~/assets/img/thumbnails/GameDev/StackTheCubes/STC2.png",
                     "~/assets/img/thumbnails/GameDev/StackTheCubes/STC3.png",
                 },
+                GameTags = "unity", "c#",
                 GameDevs = new List<UserGameDev>
                 {
                     new UserGameDev
@@ -96,6 +98,7 @@ public class WebbySoftDBSeed
                 ProjectDescription = "Lorem Ipsum web1",
                 ProjectGitLink = "https://github.com/Hakkology/E-Commerce-Website",
                 ProjectWebpage = "www.haberturk.com",
+                WebTags = "c#","asp.net","commerce",
                 WebDevs = new List<UserWebDev>
                 {
                     new UserWebDev
@@ -111,6 +114,7 @@ public class WebbySoftDBSeed
                 ProjectDescription = "Lorem Ipsum web2",
                 ProjectGitLink = "https://github.com/Hakkology/Open-AI-Implementation",
                 ProjectWebpage = "www.haberturk.com",
+                WebTags = "c#","asp.net","openai",
                 WebDevs = new List<UserWebDev>
                 {
                     new UserWebDev

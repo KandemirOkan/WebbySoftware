@@ -18,7 +18,7 @@ namespace WebbySoftware.Entity.MobileDev {
         public string ProjectDescription { get; set; }
         public List<string>? Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
-        public List<string> Tags { get; set; }
+        public List<string> MobileAppTags { get; set; }
 
         // specific attributes
         public string ProjectLink { get; set; }

@@ -23,14 +23,6 @@ public class WebController : ControllerBase
     }
 
     [HttpGet("Development/WebDevelopment/[action]")]
-    public IActionResult GetWebQuery()
-    {
-       GetWebQuery query = new(context,_mapper);
-       var result = query.Handle();
-       return Ok(result);
-    }
-
-    [HttpGet("Development/WebDevelopment/[action]")]
     public IActionResult GetWebQuery(string searchedTag)
     {
         GetWebQuery query = new GetWebQuery(context, _mapper);

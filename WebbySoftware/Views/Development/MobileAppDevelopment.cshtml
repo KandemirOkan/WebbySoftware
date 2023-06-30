@@ -8,9 +8,22 @@
 
 <div class="jumbotron text-left mb-4">
     <h1>Welcome to the Mobile App Development Page</h1>
-    <p>Please find the projects developed by our team as follows.</p>
+    <p>Please find the projects developed by our team as follows. Leave the field empty if you wish to list all projects.</p>
     <hr>
 </div>
+
+<!-- Search Bar -->
+<div class="container mt-3">
+    <p>Please enter the tag you wish to be listed.</p>
+    <form method="get" action="@Url.Action("MobileAppDevelopment", "Home")">
+        <div class="input-group">
+            <input type="text" class="form-control" name="searchedTag" placeholder="Enter a tag...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
+<hr>
 
 <div class="container mt-5 border p-3">
     @if (Model.Any())
@@ -33,6 +46,13 @@
                     <ul class="list-of-users">
                         @foreach (var user in mobileApp.Users) {
                             <li><a href="@Url.Action("Team", "Home")">@user.Name @user.Surname</a></li>
+                        }
+                    </ul>
+                    <!-- List of Tags -->
+                    <h5>Tags:</h5>
+                    <ul class="list-of-tags">
+                        @foreach (var tag in mobileApp.MobileAppTags) {
+                            <li>@tag</li>
                         }
                     </ul>
                 </div>

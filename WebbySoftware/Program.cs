@@ -70,9 +70,23 @@ namespace WebbySoftware
 
 			app.UseAuthorization();
 
-			app.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Home}/{action=Index}");
+			app.UseEndpoints(endpoints =>
+			{
+				endpoints.MapControllerRoute(
+					name: "searchedTag",
+					pattern: "Development/{action}/{searchedTag?}",
+					defaults: new { controller = "Home" },
+					constraints: new { action = "GameDevelopment|WebDevelopment|MobileAppDevelopment" }
+				);
+
+				endpoints.MapControllerRoute(
+					name: "default",
+					pattern: "{controller=Home}/{action=Index}"
+				);
+
+				// Other endpoints configuration
+			});
+
 			app.Run();
 
 		}

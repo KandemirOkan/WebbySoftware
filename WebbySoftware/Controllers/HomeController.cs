@@ -50,27 +50,28 @@ namespace WebbySoftware.Controllers
 		}
 
 		[HttpGet("Development/GameDevelopment")]
-		public IActionResult GameDevelopment()
+		public IActionResult GameDevelopment(string searchedTag)
 		{
-			GetGameQuery query = new(_context,_mapper);
-			var result = query.Handle();
+			GetGameQuery query = new GetGameQuery(_context, _mapper);
+			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
 			return View("~/Views/Development/GameDevelopment.cshtml", result);
 		}
 
 		[HttpGet("Development/WebDevelopment")]
-		public IActionResult WebDevelopment()
+		public IActionResult WebDevelopment(string searchedTag)
 		{
-			GetWebQuery query = new(_context,_mapper);
-			var result = query.Handle();
+			GetWebQuery query = new GetWebQuery(_context, _mapper);
+			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
 			return View("~/Views/Development/WebDevelopment.cshtml", result);
 		}
 
 		[HttpGet("Development/MobileAppDevelopment")]
-		public IActionResult MobileAppDevelopment()
+		public IActionResult MobileAppDevelopment(string searchedTag)
 		{
-			GetMobileAppQuery query = new(_context,_mapper);
-			var result = query.Handle();
+			GetMobileAppQuery query = new GetMobileAppQuery(_context, _mapper);
+			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
 			return View("~/Views/Development/MobileAppDevelopment.cshtml", result);
 		}
+
 	}
 }

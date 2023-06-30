@@ -23,14 +23,6 @@ public class MobileAppController : ControllerBase
     }
 
     [HttpGet("Development/MobileAppDevelopment/[action]")]
-    public IActionResult GetMobileAppQuery()
-    {
-       GetMobileAppQuery query = new(context,_mapper);
-       var result = query.Handle();
-       return Ok(result);
-    }
-
-    [HttpGet("Development/MobileAppDevelopment/[action]")]
     public IActionResult GetMobileAppQuery(string searchedTag)
     {
         GetMobileAppQuery query = new GetMobileAppQuery(context, _mapper);

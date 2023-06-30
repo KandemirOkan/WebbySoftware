@@ -14,7 +14,8 @@
 
 <!-- Search Bar -->
 <div class="container mt-3">
-    <form method="get" action="@Url.Action("GetGameQuery", "YourControllerName")">
+    <p>Please enter the tag you wish to be listed. Leave the field empty if you wish to list all projects.</p>
+    <form method="get" action="@Url.Action("GameDevelopment", "Home")">
         <div class="input-group">
             <input type="text" class="form-control" name="searchedTag" placeholder="Enter a tag...">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -22,6 +23,7 @@
     </form>
 </div>
 
+<hr>
 
 <div class="container mt-5 border p-3">
     @if (Model.Any())
@@ -44,6 +46,13 @@
                     <ul class="list-of-users">
                         @foreach (var user in game.Users) {
                             <li><a href="@Url.Action("Team", "Home")">@user.Name @user.Surname</a></li>
+                        }
+                    </ul>
+                    <!-- List of Tags -->
+                    <h5>Tags:</h5>
+                    <ul class="list-of-tags">
+                        @foreach (var tag in game.GameTags) {
+                            <li>@tag</li>
                         }
                     </ul>
                 </div>

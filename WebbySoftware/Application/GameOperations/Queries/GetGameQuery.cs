@@ -26,6 +26,18 @@ namespace WebbySoftware.Application.GameOperations.Queries{
 
             return _mapper.Map<List<GameDevViewModel>>(gameList);
         }
+
+        public List<GameDevViewModel> Handle(string searchedTag)
+        {
+            var gameList = _dbContext.Games
+                .Include(g => g.GameDevs)
+                    .ThenInclude(ug => ug.Users)
+                .Where(g => g.Tags.Contains(searchedTag))
+                .OrderBy(g => g.ID)
+                .ToList();
+
+            return _mapper.Map<List<GameDevViewModel>>(gameList);
+        }
     }
 
 
@@ -35,6 +47,7 @@ namespace WebbySoftware.Application.GameOperations.Queries{
         public string ProjectDescription { get; set; }
         public List<string> Thumbnails { get; set; }
         public string ProjectGitLink { get; set; }
+        public List<string> Tags { get; set; }
         public List<UserGameDevViewModel> Users { get; set; }
     }
 

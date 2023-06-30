@@ -12,6 +12,16 @@
     <hr>
 </div>
 
+<!-- Search Bar -->
+<div class="container mt-3">
+    <form method="get" action="@Url.Action("GetGameQuery", "YourControllerName")">
+        <div class="input-group">
+            <input type="text" class="form-control" name="searchedTag" placeholder="Enter a tag...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
 
 <div class="container mt-5 border p-3">
     @if (Model.Any())

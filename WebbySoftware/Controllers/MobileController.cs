@@ -30,6 +30,14 @@ public class MobileAppController : ControllerBase
        return Ok(result);
     }
 
+    [HttpGet("Development/MobileAppDevelopment/[action]")]
+    public IActionResult GetMobileAppQuery(string searchedTag)
+    {
+        GetMobileAppQuery query = new GetMobileAppQuery(context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return Ok(result);
+    }
+
     [HttpGet("Development/MobileAppDevelopment/[action]/{id}")]
     public IActionResult GetMobileAppById(int id)
     {

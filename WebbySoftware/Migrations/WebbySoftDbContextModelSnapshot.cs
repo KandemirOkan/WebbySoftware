@@ -52,6 +52,10 @@ namespace WebbySoftware.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<List<string>>("Tags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");
 
@@ -110,6 +114,10 @@ namespace WebbySoftware.Migrations
                     b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<List<string>>("Tags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
 
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");
@@ -235,6 +243,10 @@ namespace WebbySoftware.Migrations
                     b.Property<string>("ProjectWebpage")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<List<string>>("Tags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
 
                     b.Property<List<string>>("Thumbnails")
                         .HasColumnType("text[]");

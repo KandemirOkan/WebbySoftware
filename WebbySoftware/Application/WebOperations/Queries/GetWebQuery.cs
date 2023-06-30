@@ -26,6 +26,18 @@ namespace WebbySoftware.Application.WebOperations.Queries{
             return _mapper.Map<List<WebViewModel>>(webList);
 
         }
+
+        public List<WebViewModel> Handle(string searchedTag)
+        {
+            var webList = _dbContext.WebApps
+                .Include(g => g.WebDevs)
+                    .ThenInclude(ug => ug.Users)
+                .Where(g => g.Tags.Contains(searchedTag)) // Filter web apps based on the searched tag
+                .OrderBy(g => g.ID)
+                .ToList();
+
+            return _mapper.Map<List<WebViewModel>>(webList);
+        }
     }
 
     public class WebViewModel{
@@ -35,6 +47,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
+        public List<string> Tags { get; set; }
         public List<UserWebDevViewModel> Users {get; set;}
 
     }

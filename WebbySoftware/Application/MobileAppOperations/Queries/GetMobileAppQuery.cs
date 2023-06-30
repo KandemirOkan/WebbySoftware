@@ -26,6 +26,19 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
             return _mapper.Map<List<MobileAppDevViewModel>>(MobileAppList);
 
         }
+
+        public List<MobileAppDevViewModel> Handle(string searchedTag)
+        {
+            var mobileAppList = _dbContext.MobileApps
+                .Include(g => g.MobileDevs)
+                    .ThenInclude(ug => ug.Users)
+                .Where(g => g.Tags.Contains(searchedTag)) // Filter mobile apps based on the searched tag
+                .OrderBy(g => g.ID)
+                .ToList();
+
+            return _mapper.Map<List<MobileAppDevViewModel>>(mobileAppList);
+        }
+
     }
 
 
@@ -36,6 +49,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public List<string> Thumbnails{get; set;}
         public string ProjectGitLink{get; set;}
         public string ProjectLink{get; set;}
+        public List<string> Tags { get; set; }
         public List<UserMobileDevViewModel> Users{get; set;}
 
     }

@@ -30,6 +30,14 @@ public class GameController : ControllerBase
        return Ok(result);
     }
 
+    [HttpGet("Development/GameDevelopment/[action]")]
+    public IActionResult GetGameQuery(string searchedTag)
+    {
+        GetGameQuery query = new GetGameQuery(context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return Ok(result);
+    }
+
     [HttpGet("Development/GameDevelopment/[action]/{id}")]
     public IActionResult GetGameById(int id)
     {

@@ -45,6 +45,7 @@ namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public List<UserDev> Users {get; set;}
+        public List<string> Tags { get; set; }
 
     }
 }

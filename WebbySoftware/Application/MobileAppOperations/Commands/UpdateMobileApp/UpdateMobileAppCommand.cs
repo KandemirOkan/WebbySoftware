@@ -45,6 +45,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectLink {get; set;}
+        public List<string> Tags { get; set; }
         public List<UserDev> Users {get; set;}
 
     }

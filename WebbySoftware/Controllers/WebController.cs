@@ -30,6 +30,14 @@ public class WebController : ControllerBase
        return Ok(result);
     }
 
+    [HttpGet("Development/WebDevelopment/[action]")]
+    public IActionResult GetWebQuery(string searchedTag)
+    {
+        GetWebQuery query = new GetWebQuery(context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return Ok(result);
+    }
+
     [HttpGet("Development/WebDevelopment/[action]/{id}")]
     public IActionResult GetWebById(int id)
     {

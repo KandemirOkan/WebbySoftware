@@ -20,7 +20,7 @@ namespace WebbySoftware.Application.GameOperations.Commands.CreateGame{
             var game = _dbContext.Games.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
             if (game is not null)
             {
-                throw new InvalidOperationException("Mobile App already exists in the database.");
+                throw new InvalidOperationException(ErrorMessages.ReplicateError);
             }
 
             game = _mapper.Map<GameDev>(Model);

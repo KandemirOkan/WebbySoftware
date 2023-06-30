@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.WebOperations.Commands.UpdateWebApp{
             var WebApp = _dbContext.WebApps.SingleOrDefault(x=>x.ID == WebAppID);
             if (WebApp is not null)
             {
-                throw new InvalidOperationException("Web App ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.WebApps.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != WebAppID))
             {
-                throw new InvalidOperationException ("This game is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             WebApp = _mapper.Map<WebDev>(Model);

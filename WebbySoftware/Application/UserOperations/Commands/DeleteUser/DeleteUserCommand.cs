@@ -18,7 +18,7 @@ namespace WebbySoftware.Application.UserOperations.Commands.DeleteUser{
             var User = _dbContext.Users.Where(x=>x.Id == UserID).SingleOrDefault();
             if (User is null)
             {
-                throw new InvalidOperationException ("You entered an invalid ID Number");
+                throw new InvalidOperationException (ErrorMessages.NotFoundID);
             }
 
             _dbContext.Users.Remove(User);

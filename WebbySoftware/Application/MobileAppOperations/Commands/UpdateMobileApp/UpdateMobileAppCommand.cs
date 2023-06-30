@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
             var MobileApp = _dbContext.MobileApps.SingleOrDefault(x=>x.ID == MobileAppID);
             if (MobileApp is not null)
             {
-                throw new InvalidOperationException("Mobile App ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.Games.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != MobileAppID))
             {
-                throw new InvalidOperationException ("This game is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             MobileApp = _mapper.Map<MobileDev>(Model);

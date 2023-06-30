@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.UserOperations.Commands.UpdateUser{
 
             if (user is null)
             {
-                throw new InvalidOperationException("User ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.Users.Any(x=>x.Name.ToLower() == Model.Name.ToLower() && x.Id != UserID))
             {
-                throw new InvalidOperationException ("This user is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             user = _mapper.Map<UserDev>(Model);

@@ -49,12 +49,10 @@
                         }
                     </ul>
                     <!-- List of Tags -->
-                    <h5>Tags:</h5>
-                    <ul class="list-of-tags">
-                        @foreach (var tag in mobileApp.MobileAppTags) {
-                            <li>@tag</li>
-                        }
-                    </ul>
+                    <div style="display: flex; align-items: center;">
+                    <h5 style="margin-right: 5px;">Tags:</h5>
+                    <p style="margin: 0;">@string.Join(", ", mobileApp.MobileAppTags)</p>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="splide" id="thumbnail-slider-@mobileApp.ProjectName">

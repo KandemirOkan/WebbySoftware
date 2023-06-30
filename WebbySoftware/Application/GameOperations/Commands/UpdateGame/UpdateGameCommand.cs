@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
             var Game = _dbContext.Games.SingleOrDefault(x=>x.ID == GameID);
             if (Game is not null)
             {
-                throw new InvalidOperationException("Game ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.Games.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != GameID))
             {
-                throw new InvalidOperationException ("This game is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             Game = _mapper.Map<GameDev>(Model);

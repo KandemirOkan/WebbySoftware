@@ -22,7 +22,7 @@ namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
             var WebApp = _dbContext.WebApps.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
             if (WebApp is not null)
             {
-                throw new InvalidOperationException("Web App already exists in the database.");
+                throw new InvalidOperationException(ErrorMessages.ReplicateError);
             }
 
             WebApp = _mapper.Map<WebDev>(Model);

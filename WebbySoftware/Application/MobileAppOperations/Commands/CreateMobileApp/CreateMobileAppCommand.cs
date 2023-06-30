@@ -22,7 +22,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.CreateMobileApp
             var MobileApp = _dbContext.MobileApps.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
             if (MobileApp is not null)
             {
-                throw new InvalidOperationException("Mobile App already exists in the database.");
+                throw new InvalidOperationException(ErrorMessages.ReplicateError);
             }
 
             MobileApp = _mapper.Map<MobileDev>(Model);

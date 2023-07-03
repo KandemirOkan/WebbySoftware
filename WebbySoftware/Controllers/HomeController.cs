@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics;
+using WebbySoftware.Application.DevOperations.Queries;
 using WebbySoftware.Application.GameOperations.Queries;
 using WebbySoftware.Application.MobileAppOperations.Queries;
 using WebbySoftware.Application.UserOperations.Queries;
@@ -26,7 +27,9 @@ namespace WebbySoftware.Controllers
 		[HttpGet("")]
 		public IActionResult Home()
 		{
-			return View();
+			GetAllDevelopmentTitles query = new GetAllDevelopmentTitles(_context, _mapper);
+			var result = query.Handle();
+			return View("Home", result);
 		}
 
 		[HttpGet("About")]

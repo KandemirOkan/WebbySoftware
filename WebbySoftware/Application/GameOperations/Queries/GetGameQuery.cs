@@ -32,7 +32,7 @@ namespace WebbySoftware.Application.GameOperations.Queries{
             var gameList = _dbContext.Games
                 .Include(g => g.GameDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.GameTags.Contains(searchedTag))
+                .Where(g => g.GameTags.Contains(searchedTag) || g.ProjectName.Contains(searchedTag))
                 .OrderBy(g => g.ID)
                 .ToList();
 

@@ -117,3 +117,27 @@
 
     </body>
 </html>
+
+<script>
+$(document).ready(function() {
+  // Filter click event
+  $('#portfolio-flters li').on('click', function() {
+    // Remove active class from all filter items
+    $('#portfolio-flters li').removeClass('filter-active');
+    // Add active class to the clicked filter item
+    $(this).addClass('filter-active');
+
+    // Get the selected filter
+    var filter = $(this).data('filter');
+
+    // Show/hide portfolio items based on the selected filter
+    if (filter === '*') {
+      $('.portfolio-item').show(); // Show all items
+    } else {
+      $('.portfolio-item').hide(); // Hide all items
+      $(filter).show(); // Show items matching the selected filter
+    }
+  });
+});
+</script>
+

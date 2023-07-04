@@ -1,6 +1,7 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.WebOperations.Queries{
 
@@ -18,7 +19,12 @@ namespace WebbySoftware.Application.WebOperations.Queries{
 
         public GetWebByIDModel Handle(){
 
-            var WebApp = _dbContext.Games.SingleOrDefault(x=>x.ID == WebAppID);
+            var WebApp = _dbContext.WebApps
+                .Include(g => g.WebDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .SingleOrDefault(x=>x.ID == WebAppID);
+                
             return _mapper.Map<GetWebByIDModel>(WebApp);
 
         }
@@ -32,7 +38,14 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> WebTags { get; set; }
+        public List<UserDev> Users {get; set;}
 
+    }
+
+    public class UserWebDevViewIdModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

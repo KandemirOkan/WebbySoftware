@@ -18,7 +18,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.DeleteMobileApp
             var MobileApp = _dbContext.MobileApps.Where(x=>x.ID == MobileAppID).SingleOrDefault();
             if (MobileApp is null)
             {
-                throw new InvalidOperationException ("You entered an invalid ID Number");
+                throw new InvalidOperationException (ErrorMessages.NotFoundID);
             }
 
             _dbContext.MobileApps.Remove(MobileApp);

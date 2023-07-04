@@ -1,7 +1,7 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entity.MobileDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
@@ -18,7 +18,12 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
         public MobileAppIdModel Handle(){
 
-            var MobileApp = _dbContext.MobileApps.SingleOrDefault(x=>x.ID == MobileAppID);
+            var MobileApp = _dbContext.MobileApps
+                .Include(g => g.MobileDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .SingleOrDefault(x=>x.ID == MobileAppID);
+                
             return _mapper.Map<MobileAppIdModel>(MobileApp);
 
         }
@@ -32,6 +37,13 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> MobileAppTags { get; set; }
+        public List<UserDev> Users {get; set;}
+    }
+
+    public class UserMobileDevViewIdModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

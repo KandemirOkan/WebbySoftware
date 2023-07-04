@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using WebbySoftware.Entity.UserDev;
-
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Entity.MobileDev
 {
@@ -10,6 +9,6 @@ namespace WebbySoftware.Entity.MobileDev
         public int MobileAppID { get; set; }
         public int UserID { get; set; }
         public virtual MobileDev MobileDevs { get; set; }
-        public virtual User Users { get; set; }  
+        public virtual UserDev Users { get; set; }  
     }
 }

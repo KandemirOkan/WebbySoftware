@@ -1,7 +1,8 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.GameOperations.Queries{
 
@@ -18,7 +19,12 @@ namespace WebbySoftware.Application.GameOperations.Queries{
 
         public GameDevIdModel Handle(){
 
-            var Game = _dbContext.Games.SingleOrDefault(x=>x.ID == GameID);
+            var Game = _dbContext.Games
+                .Include(g => g.GameDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .SingleOrDefault(x=>x.ID == GameID);
+                
             return _mapper.Map<GameDevIdModel>(Game);
 
         }
@@ -31,7 +37,15 @@ namespace WebbySoftware.Application.GameOperations.Queries{
         public string ProjectDescription {get; set;}
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> GameTags { get; set; }
+        public List<UserDev> Users {get; set;}
+
+    }
+
+    public class UserGameDevViewIdModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
     }
 }

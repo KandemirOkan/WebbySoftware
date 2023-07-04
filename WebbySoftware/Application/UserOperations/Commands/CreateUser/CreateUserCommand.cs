@@ -1,6 +1,6 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.UserOperations.Commands.CreateUser
 {
@@ -22,7 +22,7 @@ namespace WebbySoftware.Application.UserOperations.Commands.CreateUser
             {
                 throw new InvalidOperationException("No registry with that e-mail address in your db.");
             }
-            user = _mapper.Map<User>(Model);
+            user = _mapper.Map<UserDev>(Model);
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
         }
@@ -31,8 +31,12 @@ namespace WebbySoftware.Application.UserOperations.Commands.CreateUser
         {
             public string Name { get; set; }
             public string Surname { get; set; }
+            public string Title { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
+            public string Photo { get; set; }
+            public string GithubLink { get; set; }
+            public string LinkedINLink { get; set; }
 
         }
     }

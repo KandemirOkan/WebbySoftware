@@ -22,15 +22,15 @@ public class WebController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("[action]")]
-    public IActionResult GetWebQuery()
+    [HttpGet("Development/WebDevelopment/[action]")]
+    public IActionResult GetWebQuery(string searchedTag)
     {
-       GetWebQuery query = new(context,_mapper);
-       var result = query.Handle();
-       return Ok(result);
+        GetWebQuery query = new GetWebQuery(context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return Ok(result);
     }
 
-    [HttpGet("[action]/{id}")]
+    [HttpGet("Development/WebDevelopment/[action]/{id}")]
     public IActionResult GetWebById(int id)
     {
         GetWebByID query = new GetWebByID(context,_mapper);
@@ -42,7 +42,7 @@ public class WebController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("[action]")]
+    [HttpPost("Development/WebDevelopment/[action]")]
     public IActionResult CreateWeb([FromBody] WebDevModel newWeb)
     {
         CreateWebAppCommand command = new CreateWebAppCommand(context,_mapper);
@@ -53,7 +53,7 @@ public class WebController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("[action]/{id}")]
+    [HttpPut("Development/WebDevelopment/[action]/{id}")]
     public IActionResult UpdateWeb(int id,[FromBody] UpdateWebAppModel updateWeb)
     {
         UpdateWebAppCommand command = new UpdateWebAppCommand (context,_mapper);
@@ -66,7 +66,7 @@ public class WebController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("[action]/{id}")]
+    [HttpDelete("Development/WebDevelopment/[action]/{id}")]
     public IActionResult DeleteWeb(int id)
     {
         DeleteWebAppCommand command = new DeleteWebAppCommand(context);

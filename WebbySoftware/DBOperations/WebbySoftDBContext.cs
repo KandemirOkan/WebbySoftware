@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.DBOperations
 {
@@ -20,10 +20,10 @@ namespace WebbySoftware.DBOperations
         public DbSet<GameDev> Games { get; set; }
         public DbSet<MobileDev> MobileApps { get; set; }
         public DbSet<WebDev> WebApps { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserGameDev> UserGameDevs { get; set; }
-        public DbSet<UserWebDev> UserWebDevs { get; set; }
-        public DbSet<UserMobileDev> UserMobileDevs { get; set; }
+        public DbSet<UserDev> Users { get; set; }
+        public DbSet<UserGameDev> GameDevs { get; set; }
+        public DbSet<UserWebDev> WebDevs { get; set; }
+        public DbSet<UserMobileDev> MobileDevs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,12 +33,12 @@ namespace WebbySoftware.DBOperations
 
             modelBuilder.Entity<UserGameDev>()
                 .HasOne(ug => ug.Users)
-                .WithMany(u => u.UserGameDevs)
+                .WithMany(u => u.GameDevs)
                 .HasForeignKey(ug => ug.UserID);
 
             modelBuilder.Entity<UserGameDev>()
                 .HasOne(ug => ug.GameDevs)
-                .WithMany(g => g.UserGameDevs)
+                .WithMany(g => g.GameDevs)
                 .HasForeignKey(ug => ug.GameID);
 
             modelBuilder.Entity<UserMobileDev>()
@@ -46,12 +46,12 @@ namespace WebbySoftware.DBOperations
 
             modelBuilder.Entity<UserMobileDev>()
                 .HasOne(um => um.MobileDevs)
-                .WithMany(u => u.UserMobileDevs)
+                .WithMany(u => u.MobileDevs)
                 .HasForeignKey(um => um.MobileAppID);
 
             modelBuilder.Entity<UserMobileDev>()
                 .HasOne(um => um.Users)
-                .WithMany(m => m.UserMobileDevs)
+                .WithMany(m => m.MobileDevs)
                 .HasForeignKey(um => um.UserID);
 
             modelBuilder.Entity<UserWebDev>()
@@ -59,12 +59,12 @@ namespace WebbySoftware.DBOperations
 
             modelBuilder.Entity<UserWebDev>()
                 .HasOne(uw => uw.Users)
-                .WithMany(u => u.UserWebDevs)
+                .WithMany(u => u.WebDevs)
                 .HasForeignKey(uw => uw.UserID);
 
             modelBuilder.Entity<UserWebDev>()
                 .HasOne(uw => uw.WebDevs)
-                .WithMany(w => w.UserWebDevs)
+                .WithMany(w => w.WebDevs)
                 .HasForeignKey(uw => uw.WebAppID);
 
             base.OnModelCreating(modelBuilder);

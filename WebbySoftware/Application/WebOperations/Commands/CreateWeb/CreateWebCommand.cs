@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
 
@@ -22,7 +22,7 @@ namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
             var WebApp = _dbContext.WebApps.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
             if (WebApp is not null)
             {
-                throw new InvalidOperationException("Web App already exists in the database.");
+                throw new InvalidOperationException(ErrorMessages.ReplicateError);
             }
 
             WebApp = _mapper.Map<WebDev>(Model);
@@ -40,7 +40,8 @@ namespace WebbySoftware.Application.WebOperations.Commands.CreateWebApp{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> WebTags { get; set; }
+        public List<UserDev> Users {get; set;}
 
     }
 

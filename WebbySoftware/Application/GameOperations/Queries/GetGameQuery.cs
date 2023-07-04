@@ -1,7 +1,8 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.GameOperations.Queries{
 
@@ -17,19 +18,43 @@ namespace WebbySoftware.Application.GameOperations.Queries{
 
         public List<GameDevViewModel> Handle(){
 
-            var gameList = _dbContext.Games.OrderBy(x=>x.ID).ToList<GameDev>();
-            return _mapper.Map<List<GameDevViewModel>>(gameList);
+            var gameList = _dbContext.Games
+                .Include(g => g.GameDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .ToList();
 
+            return _mapper.Map<List<GameDevViewModel>>(gameList);
+        }
+
+        public List<GameDevViewModel> Handle(string searchedTag)
+        {
+            var gameList = _dbContext.Games
+                .Include(g => g.GameDevs)
+                    .ThenInclude(ug => ug.Users)
+                .Where(g => g.GameTags.Contains(searchedTag) || g.ProjectName.Contains(searchedTag))
+                .OrderBy(g => g.ID)
+                .ToList();
+
+            return _mapper.Map<List<GameDevViewModel>>(gameList);
         }
     }
 
 
-    public class GameDevViewModel{
+    public class GameDevViewModel
+    {
+        public string ProjectName { get; set; }
+        public string ProjectDescription { get; set; }
+        public List<string> Thumbnails { get; set; }
+        public string ProjectGitLink { get; set; }
+        public List<string> GameTags { get; set; }
+        public List<UserGameDevViewModel> Users { get; set; }
+    }
 
-        public string ProjectName;
-        public string ProjectDescription;
-        public List<string> Thumbnails;
-        public string ProjectGitLink;
-        public List<User> Users;
+    public class UserGameDevViewModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+
     }
 }

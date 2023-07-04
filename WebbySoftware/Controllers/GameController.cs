@@ -22,15 +22,16 @@ public class GameController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("[action]")]
-    public IActionResult GetGameQuery()
+    [HttpGet("Development/GameDevelopment/[action]")]
+    public IActionResult GetGameQuery(string searchedTag)
     {
-       GetGameQuery query = new(context,_mapper);
-       var result = query.Handle();
-       return Ok(result);
+        GetGameQuery query = new GetGameQuery(context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return Ok(result);
     }
 
-    [HttpGet("[action]/{id}")]
+
+    [HttpGet("Development/GameDevelopment/[action]/{id}")]
     public IActionResult GetGameById(int id)
     {
         GetGameByID query = new GetGameByID(context,_mapper);
@@ -42,7 +43,7 @@ public class GameController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("[action]")]
+    [HttpPost("Development/GameDevelopment/[action]")]
     public IActionResult CreateGame([FromBody] GameDevModel newGame)
     {
         CreateGameCommand command = new CreateGameCommand(context,_mapper);
@@ -53,7 +54,7 @@ public class GameController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("[action]/{id}")]
+    [HttpPut("Development/GameDevelopment/[action]/{id}")]
     public IActionResult UpdateGame(int id,[FromBody] UpdateGameModel updateGame)
     {
         UpdateGameCommand command = new UpdateGameCommand(context,_mapper);
@@ -66,7 +67,7 @@ public class GameController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("[action]/{id}")]
+    [HttpDelete("Development/GameDevelopment/[action]/{id}")]
     public IActionResult DeleteGame(int id)
     {
         DeleteGameCommand command = new DeleteGameCommand(context);

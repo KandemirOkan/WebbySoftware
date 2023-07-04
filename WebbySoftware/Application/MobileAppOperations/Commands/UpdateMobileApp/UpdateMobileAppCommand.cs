@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.MobileDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp{
 
@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
             var MobileApp = _dbContext.MobileApps.SingleOrDefault(x=>x.ID == MobileAppID);
             if (MobileApp is not null)
             {
-                throw new InvalidOperationException("Mobile App ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.Games.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != MobileAppID))
             {
-                throw new InvalidOperationException ("This game is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             MobileApp = _mapper.Map<MobileDev>(Model);
@@ -45,7 +45,8 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> MobileAppTags { get; set; }
+        public List<UserDev> Users {get; set;}
 
     }
 }

@@ -1,4 +1,4 @@
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -14,7 +14,7 @@ namespace WebbySoftware.TokenOperations
             _configuration = configuration;
         }
 
-        public Token CreateAccessToken(User user)
+        public Token CreateAccessToken(UserDev user)
         {
             Token tokenModel = new();
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));

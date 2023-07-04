@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
 
@@ -23,12 +23,12 @@ namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
             var Game = _dbContext.Games.SingleOrDefault(x=>x.ID == GameID);
             if (Game is not null)
             {
-                throw new InvalidOperationException("Game ID cannot be found");
+                throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
             if (_dbContext.Games.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != GameID))
             {
-                throw new InvalidOperationException ("This game is registered with a different ID Number");
+                throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }
 
             Game = _mapper.Map<GameDev>(Model);
@@ -44,7 +44,8 @@ namespace WebbySoftware.Application.GameOperations.Commands.UpdateGame{
         public string ProjectDescription {get; set;}
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<UserDev> Users {get; set;}
+        public List<string> GameTags { get; set; }
 
     }
 }

@@ -18,7 +18,7 @@ namespace WebbySoftware.Application.GameOperations.Commands.DeleteGame{
             var Game = _dbContext.Games.Where(x=>x.ID == GameID).SingleOrDefault();
             if (Game is null)
             {
-                throw new InvalidOperationException ("You entered an invalid ID Number");
+                throw new InvalidOperationException (ErrorMessages.NotFoundID);
             }
 
             _dbContext.Games.Remove(Game);

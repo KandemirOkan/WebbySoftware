@@ -18,7 +18,7 @@ namespace WebbySoftware.Application.WebOperations.Commands.DeleteWeb{
             var WebApp = _dbContext.WebApps.Where(x=>x.ID == WebAppID).SingleOrDefault();
             if (WebApp is null)
             {
-                throw new InvalidOperationException ("You entered an invalid ID Number");
+                throw new InvalidOperationException (ErrorMessages.NotFoundID);
             }
 
             _dbContext.WebApps.Remove(WebApp);

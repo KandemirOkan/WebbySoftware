@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.GameDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.Application.GameOperations.Commands.CreateGame{
 
@@ -17,17 +17,18 @@ namespace WebbySoftware.Application.GameOperations.Commands.CreateGame{
 
         public void Handle(){
 
-            var Game = _dbContext.Games.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
-            if (Game is not null)
+            var game = _dbContext.Games.SingleOrDefault(x=>x.ProjectName == Model.ProjectName);
+            if (game is not null)
             {
-                throw new InvalidOperationException("Game already exists in the database.");
+                throw new InvalidOperationException(ErrorMessages.ReplicateError);
             }
 
-            Game = _mapper.Map<GameDev>(Model);
-            _dbContext.Games.Add(Game);
+            game = _mapper.Map<GameDev>(Model);
+            _dbContext.Games.Add(game);
             _dbContext.SaveChanges();
         }
     }
+
 
 
     public class GameDevModel{
@@ -36,7 +37,8 @@ namespace WebbySoftware.Application.GameOperations.Commands.CreateGame{
         public string ProjectDescription {get; set;}
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
-        public List<User> Users {get; set;}
+        public List<UserDev> Users {get; set;}
+        public List<string> GameTags { get; set; }
 
     }
 }

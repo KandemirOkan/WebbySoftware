@@ -1,7 +1,8 @@
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.WebDev;
-using WebbySoftware.Entity.UserDev;
+using WebbySoftware.Entity.User;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebbySoftware.Application.WebOperations.Queries{
 
@@ -17,9 +18,25 @@ namespace WebbySoftware.Application.WebOperations.Queries{
 
         public List<WebViewModel> Handle(){
 
-            var webList = _dbContext.WebApps.OrderBy(x=>x.ID).ToList<WebDev>();
+            var webList = _dbContext.WebApps
+                .Include(g => g.WebDevs)
+                    .ThenInclude(ug => ug.Users)
+                .OrderBy(g => g.ID)
+                .ToList();
             return _mapper.Map<List<WebViewModel>>(webList);
 
+        }
+
+        public List<WebViewModel> Handle(string searchedTag)
+        {
+            var webList = _dbContext.WebApps
+                .Include(g => g.WebDevs)
+                    .ThenInclude(ug => ug.Users)
+                .Where(g => g.WebTags.Contains(searchedTag) || g.ProjectName.Contains(searchedTag)) // Filter web apps based on the searched tag
+                .OrderBy(g => g.ID)
+                .ToList();
+
+            return _mapper.Map<List<WebViewModel>>(webList);
         }
     }
 
@@ -30,7 +47,14 @@ namespace WebbySoftware.Application.WebOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public string ProjectWebpage {get; set;}
-        public List<User> Users {get; set;}
+        public List<string> WebTags { get; set; }
+        public List<UserWebDevViewModel> Users {get; set;}
 
+    }
+
+    public class UserWebDevViewModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }

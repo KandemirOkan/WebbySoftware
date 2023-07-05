@@ -101,14 +101,16 @@
             {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app filter-game">
                     <div class="portfolio-wrap">
-                        @if (item.Thumbnails.Count > 0)
-                        {
-                            <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid" alt="">
-                        }
-                        else
-                        {
-                            <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
-                        }
+                        <div class="portfolio-image">
+                            @if (item.Thumbnails.Count > 0)
+                            {
+                                <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid portfolio-image" alt="Responsive image">
+                            }
+                            else
+                            {
+                                <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
+                            }
+                        </div>
                         <div class="portfolio-info">
                             <h4>@item.ProjectName</h4>
                         </div>
@@ -128,14 +130,16 @@
             {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app filter-web">
                     <div class="portfolio-wrap">
-                        @if (item.Thumbnails.Count > 0)
-                        {
-                            <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid" alt="">
-                        }
-                        else
-                        {
-                            <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
-                        }
+                        <div class="portfolio-image">
+                            @if (item.Thumbnails.Count > 0)
+                            {
+                                <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid portfolio-image" alt="Responsive image">
+                            }
+                            else
+                            {
+                                <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
+                            }
+                        </div>
                         <div class="portfolio-info">
                             <h4>@item.ProjectName</h4>
                         </div>
@@ -154,14 +158,16 @@
             {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app filter-mobile">
                     <div class="portfolio-wrap">
-                        @if (item.Thumbnails.Count > 0)
-                        {
-                            <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid" alt="">
-                        }
-                        else
-                        {
-                            <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
-                        }
+                        <div class="portfolio-image">
+                            @if (item.Thumbnails.Count > 0)
+                            {
+                                <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid portfolio-image" alt="Responsive image">
+                            }
+                            else
+                            {
+                                <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
+                            }
+                        </div>
                         <div class="portfolio-info">
                             <h4>@item.ProjectName</h4>
                         </div>

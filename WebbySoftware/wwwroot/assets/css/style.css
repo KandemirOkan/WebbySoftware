@@ -655,29 +655,25 @@ section {
 .portfolio .portfolio-item {
   position: relative;
   width: 100%;
-  height: 300px; /* Adjust this value to control the height */
+  height: 0;
+  padding-bottom: 75%; /* Adjust this value to control the aspect ratio */
   overflow: hidden;
 }
 
-.portfolio .portfolio-item .portfolio-wrap {
+.portfolio .portfolio-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio .portfolio-wrap {
+  transition: 0.3s;
   position: relative;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
-  background: #000;
-}
-
-.portfolio .portfolio-item .portfolio-wrap .portfolio-image .img-fluid.portfolio-image {
-  height: 200px !important;
-  width: 100%;
-  object-fit: cover;
-}
-
-.portfolio .portfolio-item .portfolio-wrap .portfolio-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  z-index: 1;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -764,42 +760,42 @@ section {
 .portfolio .portfolio-item {
   position: relative;
   width: 100%;
-  height: 300px; /* Adjust this value to control the height */
+  height: 0;
+  padding-bottom: 75%; /* Adjust this value to control the aspect ratio */
   overflow: hidden;
 }
 
-.portfolio .portfolio-wrap {
-  position: relative;
-  width: 100%;
-  height: 300px; /* Adjust this value to control the height */
-  overflow: hidden;
-  background: #000;
-}
-
-.portfolio .portfolio-wrap .portfolio-image img {
+.portfolio .portfolio-item img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+}
+
+.portfolio .portfolio-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  padding-bottom: 75%; /* Adjust this value to control the aspect ratio */
 }
 
 .portfolio .portfolio-wrap::before {
   content: "";
+  background: rgba(255, 255, 255, 0.7);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black; /* Add background color */
-  opacity: 0.7; /* Adjust opacity as desired */
-  z-index: 2;
+  right: 0;
+  bottom: 0;
   transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
 }
 
-.portfolio .portfolio-info {
+.portfolio .portfolio-wrap .portfolio-info {
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -810,7 +806,19 @@ section {
   transition: all ease-in-out 0.3s;
 }
 
-.portfolio .portfolio-links {
+.portfolio .portfolio-wrap .portfolio-info h4 {
+  font-size: 20px;
+  color: #364146;
+  font-weight: 600;
+}
+
+.portfolio .portfolio-wrap .portfolio-info p {
+  color: #364146;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.portfolio .portfolio-wrap .portfolio-links {
   opacity: 0;
   left: 0;
   right: 0;
@@ -821,8 +829,25 @@ section {
   transition: all ease-in-out 0.3s;
 }
 
+.portfolio .portfolio-wrap .portfolio-links a {
+  color: #009cea;
+  margin: 0 2px;
+  font-size: 24px;
+  display: inline-block;
+  transition: 0.3s;
+  background: #eaf8ff;
+  border-radius: 50px;
+  line-height: 0;
+  padding: 6px;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  color: #fff;
+  background: #009cea;
+}
+
 .portfolio .portfolio-wrap:hover::before {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
@@ -832,7 +857,6 @@ section {
 .portfolio .portfolio-wrap:hover .portfolio-links {
   opacity: 1;
 }
-
 
 
 

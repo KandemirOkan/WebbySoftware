@@ -153,6 +153,7 @@ public class WebbySoftDBSeed
                 };
 
                 context.Games.AddRange(game1, game2, game3, game4);
+                context.SaveChanges();
             }
 
             if (context.WebApps.Any())
@@ -206,7 +207,7 @@ public class WebbySoftDBSeed
                         new UserWebDev
                         {
                             Users = okanUser
-                        },
+                        }
                     }
                 };
 
@@ -226,18 +227,15 @@ public class WebbySoftDBSeed
                         new UserWebDev
                         {
                             Users = okanUser
-                        },
+                        }
                     }
                 };
 
                 context.WebApps.AddRange(web1, web2, web3);
+                context.SaveChanges();
             }
 
-            if (context.DesktopApps.Any())
-            {
-                return;
-            }
-            else
+            if (!context.DesktopApps.Any())
             {
                 var desk1 = new DesktopDev
                 {
@@ -248,20 +246,19 @@ public class WebbySoftDBSeed
                         "~/assets/img/thumbnails/WebDev/CurrencyConverter/Currency_Converter_App.png"
                     },
                     DeskTags = new List<string>  {
-                        "c#", "aspnet"
+                        "c#", "forms"
                     },
                     DeskDevs = new List<UserDeskDev>
                     {
                         new UserDeskDev
                         {
                             Users = okanUser
-                        },
+                        }
                     }
                 };
                 context.DesktopApps.AddRange(desk1);
+                context.SaveChanges();
             }
-
-            context.SaveChanges();
         }
     }
 }

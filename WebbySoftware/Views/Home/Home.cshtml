@@ -175,6 +175,32 @@
                     </div>
                 </div>
             }
+
+            @foreach (var item in Model.DesktopQuickViewModels)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app filter-mobile">
+                    <div class="portfolio-wrap">
+                        @if (item.Thumbnails.Count > 0)
+                        {
+                            <img src="@Url.Content(item.Thumbnails[0])" class="img-fluid" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/assets/img/portfolio/27230.jpg" class="img-fluid" alt="Placeholder">
+                        }
+                        <div class="portfolio-info">
+                            <h4>@item.ProjectName</h4>
+                        </div>
+                        <div class="portfolio-links">
+                            @if (item.Thumbnails.Count > 0)
+                            {
+                                <a href="@Url.Content(item.Thumbnails[0])" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.ProjectName"><i class="bx bx-plus"></i></a>
+                            }
+                            <a href="@Url.Action("DesktopDevelopment", "Desk", new { searchedTag = item.ProjectName })" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
     </section><!-- End Portfolio Section -->

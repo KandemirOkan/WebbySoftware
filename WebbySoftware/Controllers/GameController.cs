@@ -10,8 +10,6 @@ using WebbySoftware.Models;
 
 namespace WebbySoftware.Controllers.GameController;
 
-[ApiController]
-[Route("[controller]")]
 public class GameController : Controller
 {
     private readonly IWebbySoftDBContext _context;

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebbySoftware.Controllers.WebController;
 
-
 public class WebController : Controller
 {
     private readonly IWebbySoftDBContext _context;

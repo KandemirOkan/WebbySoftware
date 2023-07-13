@@ -22,6 +22,14 @@ public class MobileAppController : ControllerBase
         _mapper = mapper;
     }
 
+    [HttpGet("Development/MobileAppDevelopment")]
+    public IActionResult MobileAppDevelopment(string searchedTag)
+    {
+        GetMobileAppQuery query = new GetMobileAppQuery(_context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return View("~/Views/Development/MobileAppDevelopment.cshtml", result);
+    }
+
     [HttpGet("Development/MobileAppDevelopment/[action]")]
     public IActionResult GetMobileAppQuery(string searchedTag)
     {

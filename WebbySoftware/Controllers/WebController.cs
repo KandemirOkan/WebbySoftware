@@ -22,6 +22,14 @@ public class WebController : ControllerBase
         _mapper = mapper;
     }
 
+    [HttpGet("Development/WebDevelopment")]
+    public IActionResult WebDevelopment(string searchedTag)
+    {
+        GetWebQuery query = new GetWebQuery(_context, _mapper);
+        var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
+        return View("~/Views/Development/WebDevelopment.cshtml", result);
+    }
+
     [HttpGet("Development/WebDevelopment/[action]")]
     public IActionResult GetWebQuery(string searchedTag)
     {

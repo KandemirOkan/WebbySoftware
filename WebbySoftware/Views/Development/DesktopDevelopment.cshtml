@@ -1,13 +1,13 @@
-﻿@model List<WebbySoftware.Application.GameOperations.Queries.GameDevViewModel>
+@model List<WebbySoftware.Application.DeskOperations.Queries.DeskDevViewModel>
 
 @{
-    ViewData["Title"] = "GameDevelopment";
+    ViewData["Title"] = "DesktopDevelopment";
 }
 
-<h1>GameDevelopment</h1>
+<h1>DesktopDevelopment</h1>
 
 <div class="jumbotron text-left mb-4">
-    <h1>Welcome to the Game Development Page</h1>
+    <h1>Welcome to the Desktop Development Page</h1>
     <p>Please find the projects developed by our team as follows.</p>
     <hr>
 </div>
@@ -15,7 +15,7 @@
 <!-- Search Bar -->
 <div class="container mt-3">
     <p>Please enter the tag you wish to be listed. Leave the field empty if you wish to list all projects.</p>
-    <form method="get" action="@Url.Action("GameDevelopment", "Game")">
+    <form method="get" action="@Url.Action("DesktopDevelopment", "Desk")">
         <div class="input-group">
             <input type="text" class="form-control" name="searchedTag" placeholder="Enter a tag...">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -28,37 +28,37 @@
 <div class="container mt-5 border p-3">
     @if (Model.Any())
     {
-        @foreach (var game in Model) {
+        @foreach (var desk in Model) {
         <div class="project-module">
             <!-- Project Name -->
             <div class="row">
                 <div class="col-12">
-                    <h1 class="project-name">@game.ProjectName</h1>
+                    <h1 class="project-name">@desk.ProjectName</h1>
                 </div>
             </div>
 
             <!-- Project Description and Slider -->
             <div class="row">
                 <div class="col-md-6">
-                    <p class="project-description">@game.ProjectDescription</p>
+                    <p class="project-description">@desk.ProjectDescription</p>
                     <!-- List of Users -->
                     <h5>Project Participants:</h5>
                     <ul class="list-of-users">
-                        @foreach (var user in game.Users) {
+                        @foreach (var user in desk.Users) {
                             <li><a href="@Url.Action("Team", "Home")">@user.Name @user.Surname</a></li>
                         }
                     </ul>
                     <!-- List of Tags -->
                     <div style="display: flex; align-items: center;">
                     <h5 style="margin-right: 5px;">Tags:</h5>
-                    <p style="margin: 0;">@string.Join(", ", game.GameTags)</p>
+                    <p style="margin: 0;">@string.Join(", ", desk.DeskTags)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="splide" id="thumbnail-slider-@game.ProjectName">
+                    <div class="splide" id="thumbnail-slider-@desk.ProjectName">
                         <div class="splide__track">
                             <ul class="splide__list">
-                                @foreach (var thumbnail in game.Thumbnails) 
+                                @foreach (var thumbnail in desk.Thumbnails) 
                                 {
                                     <li class="splide__slide">
                                         <img src="@Url.Content(thumbnail)" class="img-fluid" alt="">
@@ -73,7 +73,7 @@
             <!-- GitHub Link -->
             <div class="row mt-3">
                 <div class="col-12">
-                    <p class="github-link"><a href="@game.ProjectGitLink">Project GitHub Link</a></p>
+                    <p class="github-link"><a href="@desk.ProjectGitLink">Project GitHub Link</a></p>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
     }
     else
     {
-        <h2>No Games found, stay tuned for updates!</h2>
+        <h2>No Desktop Apps found, stay tuned for updates!</h2>
     }
 <br>
 </div>

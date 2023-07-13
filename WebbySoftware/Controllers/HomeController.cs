@@ -52,29 +52,5 @@ namespace WebbySoftware.Controllers
 			return View();
 		}
 
-		[HttpGet("Development/GameDevelopment")]
-		public IActionResult GameDevelopment(string searchedTag)
-		{
-			GetGameQuery query = new GetGameQuery(_context, _mapper);
-			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
-			return View("~/Views/Development/GameDevelopment.cshtml", result);
-		}
-
-		[HttpGet("Development/WebDevelopment")]
-		public IActionResult WebDevelopment(string searchedTag)
-		{
-			GetWebQuery query = new GetWebQuery(_context, _mapper);
-			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
-			return View("~/Views/Development/WebDevelopment.cshtml", result);
-		}
-
-		[HttpGet("Development/MobileAppDevelopment")]
-		public IActionResult MobileAppDevelopment(string searchedTag)
-		{
-			GetMobileAppQuery query = new GetMobileAppQuery(_context, _mapper);
-			var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
-			return View("~/Views/Development/MobileAppDevelopment.cshtml", result);
-		}
-
 	}
 }

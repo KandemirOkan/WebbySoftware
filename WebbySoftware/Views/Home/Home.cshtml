@@ -40,7 +40,7 @@
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
                 <div class="icon-box icon-box-pink">
                     <div class="icon"><i class="bx bx-paint"></i></div>
-                    <h4 class="title"><a href="@Url.Action("MobileAppDevelopment", "Home")" class="text-primary">Mobile App Development</a></h4>
+                    <h4 class="title"><a href="@Url.Action("MobileAppDevelopment", "Mobile")" class="text-primary">Mobile App Development</a></h4>
                     <p class="description">We bring your unique ideas to life with our expertise in developing visually stunning and interactive applications.</p>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="100">
                 <div class="icon-box icon-box-cyan">
                     <div class="icon"><i class="bx bx-code"></i></div>
-                    <h4 class="title"><a href="@Url.Action("WebDevelopment", "Home")" class="text-primary">Web Development</a></h4>
+                    <h4 class="title"><a href="@Url.Action("WebDevelopment", "Web")" class="text-primary">Web Development</a></h4>
                     <p class="description">We also offer web develeopment solutions to our partners and customers so that they can sell, display or promote their efforts and products through web.</p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
                 <div class="icon-box icon-box-green">
                     <div class="icon"><i class="bx bx-game"></i></div>
-                    <h4 class="title"><a href="@Url.Action("GameDevelopment", "Home")" class="text-primary">Game Development</a></h4>
+                    <h4 class="title"><a href="@Url.Action("GameDevelopment", "Game")" class="text-primary">Game Development</a></h4>
                     <p class="description">We also offer game development solutions to our customers and make our own indie games for showcasing.</p>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                             {
                                 <a href="@Url.Content(item.Thumbnails[0])" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.ProjectName"><i class="bx bx-plus"></i></a>
                             }
-                            <a href="@Url.Action("GameDevelopment", "Home", new { searchedTag = item.ProjectName })" title="More Details" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="@Url.Action("GameDevelopment", "Game", new { searchedTag = item.ProjectName })" title="More Details" title="More Details"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                             {
                                 <a href="@Url.Content(item.Thumbnails[0])" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.ProjectName"><i class="bx bx-plus"></i></a>
                             }
-                            <a href="@Url.Action("WebDevelopment", "Home", new { searchedTag = item.ProjectName })" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="@Url.Action("WebDevelopment", "Web", new { searchedTag = item.ProjectName })" title="More Details"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                             {
                                 <a href="@Url.Content(item.Thumbnails[0])" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.ProjectName"><i class="bx bx-plus"></i></a>
                             }
-                            <a href="@Url.Action("MobileAppDevelopment", "Home", new { searchedTag = item.ProjectName })" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="@Url.Action("MobileAppDevelopment", "MobileApp", new { searchedTag = item.ProjectName })" title="More Details"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                 </div>

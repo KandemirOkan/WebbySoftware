@@ -27,11 +27,16 @@ namespace WebbySoftware.Application.DevOperations.Queries{
                 .OrderBy(m=>m.ID)
                 .ToList();
 
+            var deskList = _dbContext.DeskDevs
+                .OrderBy(m=>m.ID)
+                .ToList();
+
             var devList = new DevelopmentViewModel
             {
                 GameQuickViewModels = _mapper.Map<List<GameQuickViewModel>>(gameList),
                 MobileAppQuickViewModels = _mapper.Map<List<MobileAppQuickViewModel>>(mobileList),
-                WebQuickViewModels = _mapper.Map<List<WebQuickViewModel>>(webList)
+                WebQuickViewModels = _mapper.Map<List<WebQuickViewModel>>(webList),
+                DesktopQuickViewModels = _mapper.Map<List<DeskQuickViewModel>>(deskList)
             };
             
             return devList;
@@ -43,6 +48,7 @@ namespace WebbySoftware.Application.DevOperations.Queries{
         public List<GameQuickViewModel> GameQuickViewModels { get; set; }
         public List<MobileAppQuickViewModel> MobileAppQuickViewModels { get; set; }
         public List<WebQuickViewModel> WebQuickViewModels { get; set; }
+        public List <DeskQuickViewModel> DesktopQuickViewModels { get; set; }
     }
 
     public class GameQuickViewModel
@@ -58,6 +64,11 @@ namespace WebbySoftware.Application.DevOperations.Queries{
     }
 
     public class MobileAppQuickViewModel
+    {
+        public string ProjectName { get; set; }
+        public List<string> Thumbnails { get; set; }
+    }
+    public class DeskQuickViewModel
     {
         public string ProjectName { get; set; }
         public List<string> Thumbnails { get; set; }

@@ -26,7 +26,7 @@ public class WebbySoftDBSeed
                 Surname = "Yildiz",
                 Title = "Co-founder",
                 Email = "yildizhakan88@gmail.com",
-                Password = "1234",
+                Password = "+905367849327",
                 Photo = "~/assets/img/team/HakanYıldız.png",
                 GithubLink = "https://github.com/Hakkology",
                 LinkedINLink = "https://www.linkedin.com/in/hakan-yildiz-029845132/"
@@ -38,7 +38,7 @@ public class WebbySoftDBSeed
                 Surname = "Kandemir",
                 Title = "Co-founder",
                 Email = "okan-kan@hotmail.com",
-                Password = "1234",
+                Password = "+905372771839",
                 Photo = "~/assets/img/team/OkanKandemir.png",
                 GithubLink = "https://github.com/KandemirOkan",
                 LinkedINLink = "https://www.linkedin.com/in/okan-kandemir-77427014b/"
@@ -53,7 +53,7 @@ public class WebbySoftDBSeed
             var game1 = new GameDev
             {
                 ProjectName = "OpenGL-Framework",
-                ProjectDescription = "OpenGL-Framework Description",
+                ProjectDescription = "Game Engine written from scratch using Open-GL. More details can be found on github page.",
                 ProjectGitLink = "https://github.com/Hakkology/OpenGL-Framework",
                 Thumbnails = new List<string>
                 {
@@ -77,7 +77,7 @@ public class WebbySoftDBSeed
             var game2 = new GameDev
             {
                 ProjectName = "Stack the Cubes",
-                ProjectDescription = "Runner Game made by Unity",
+                ProjectDescription = "Runner Game made by Unity. Object Pooling and Procedural Content Generation Exercises along with a few game mechanics.",
                 ProjectGitLink = "https://github.com/Hakkology/Stack-the-Cubes",
                 Thumbnails = new List<string> {
                     "~/assets/img/thumbnails/GameDev/StackTheCubes/STC1.png",
@@ -85,7 +85,55 @@ public class WebbySoftDBSeed
                     "~/assets/img/thumbnails/GameDev/StackTheCubes/STC3.png",
                 },
                 GameTags = new List<string>  {
-                    "uniy", "c#"
+                    "unity", "c#"
+                },
+                GameDevs = new List<UserGameDev>
+                {
+                    new UserGameDev
+                    {
+                        Users = hakanUser
+                    }
+                }
+            };
+
+            var game3 = new GameDev
+            {
+                ProjectName = "Under the Rift's Shadow",
+                ProjectDescription = "Unity RPG game prototype. Village simulation with workers running around with NavMesh. Dialogue options. Enemies and a very simple attack. Using random free assets and mixamo animations and a live world.",
+                ProjectGitLink = "https://github.com/Hakkology/Under-the-Rift-s-Shadow",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift1.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift2.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift3.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift4.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift5.png"
+                },
+                GameTags = new List<string>  {
+                    "unity", "c#"
+                },
+                GameDevs = new List<UserGameDev>
+                {
+                    new UserGameDev
+                    {
+                        Users = hakanUser
+                    }
+                }
+            };
+
+            var game4 = new GameDev
+            {
+                ProjectName = "Terrain Test",
+                ProjectDescription = "Unity Terrain generation prototype. Creating a beautiful biome with terrain tools. Navmesh critter controls. Three attack combo animation. Using random free assets and mixamo animations.",
+                ProjectGitLink = "https://github.com/Hakkology/Terrain-Character-Animation-Studies",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift1.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift2.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift3.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift4.png",
+                    "~/assets/img/thumbnails/GameDev/UnderRiftShadow/Rift5.png"
+                },
+                GameTags = new List<string>  {
+                    "unity", "c#"
                 },
                 GameDevs = new List<UserGameDev>
                 {
@@ -98,30 +146,17 @@ public class WebbySoftDBSeed
 
             var web1 = new WebDev
             {
-                ProjectName = "Web1",
-                ProjectDescription = "Lorem Ipsum web1",
+                ProjectName = "E-Commerce Website",
+                ProjectDescription = "Using a free template, creation of a 5 layer E-Commerce website. Connected to MSSQL database. User login, register and basket features.",
                 ProjectGitLink = "https://github.com/Hakkology/E-Commerce-Website",
-                ProjectWebpage = "www.haberturk.com",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/WebDev/ECommerceWebsite/Vekproj1.png",
+                    "~/assets/img/thumbnails/WebDev/ECommerceWebsite/Vekproj2.png",
+                    "~/assets/img/thumbnails/WebDev/ECommerceWebsite/Vekproj3.png",
+                    "~/assets/img/thumbnails/WebDev/ECommerceWebsite/Vekproj4.png",
+                },
                 WebTags = new List<string>  {
                     "c#", "aspnet","commerce"
-                },
-                WebDevs = new List<UserWebDev>
-                {
-                    new UserWebDev
-                    {
-                        Users = okanUser
-                    }
-                }
-            };
-
-            var web2 = new WebDev
-            {
-                ProjectName = "Web2",
-                ProjectDescription = "Lorem Ipsum web2",
-                ProjectGitLink = "https://github.com/Hakkology/Open-AI-Implementation",
-                ProjectWebpage = "www.haberturk.com",
-                WebTags = new List<string>  {
-                    "c#", "aspnet","ai"
                 },
                 WebDevs = new List<UserWebDev>
                 {
@@ -136,8 +171,50 @@ public class WebbySoftDBSeed
                 }
             };
 
-            context.Games.AddRange(game1, game2);
-            context.WebApps.AddRange(web1, web2);
+            var web2 = new WebDev
+            {
+                ProjectName = "E-CommerceWebsite-2",
+                ProjectDescription = "Using a free template, creation of a 5 layer E-Commerce website. Connected to MSSQL database. User login, register and basket features. More detailed outline categories.",
+                ProjectGitLink = "https://github.com/KandemirOkan/E-Commerce-Website",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/WebDev/HepsiOrada/HepsiOrada2.png",
+                    "~/assets/img/thumbnails/WebDev/HepsiOrada/HepsiOrada3.png",
+                    "~/assets/img/thumbnails/WebDev/HepsiOrada/HepsiOradaHomePage.png"
+                },
+                WebTags = new List<string>  {
+                    "c#", "aspnet","commerce"
+                },
+                WebDevs = new List<UserWebDev>
+                {
+                    new UserWebDev
+                    {
+                        Users = okanUser
+                    },
+                }
+            };
+
+            var web3 = new WebDev
+            {
+                ProjectName = "Currency-Converter",
+                ProjectDescription = "Using a free template, creation of a 5 layer E-Commerce website. Connected to MSSQL database. User login, register and basket features. More detailed outline categories.",
+                ProjectGitLink = "https://github.com/KandemirOkan/Form_App_CurrencyConversion",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/WebDev/CurrencyConverter/Currency_Converter_App.png"
+                },
+                WebTags = new List<string>  {
+                    "c#", "aspnet"
+                },
+                WebDevs = new List<UserWebDev>
+                {
+                    new UserWebDev
+                    {
+                        Users = okanUser
+                    },
+                }
+            };
+
+            context.Games.AddRange(game1, game2, game3, game4);
+            context.WebApps.AddRange(web1, web2, web3);
             context.SaveChanges();
         }
     }

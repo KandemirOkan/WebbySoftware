@@ -15,6 +15,7 @@ namespace WebbySoftware.Application.UserOperations.Queries
             _dbContext = dbContext;
             _mapper = mapper;
         }
+        
         public List<UserViewModel> Handle()
         {
             var users = _dbContext.Users.ToList<UserDev>();

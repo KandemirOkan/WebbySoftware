@@ -49,7 +49,9 @@ namespace WebbySoftware.Controllers
 		[HttpGet("Contact")]
 		public IActionResult Contact()
 		{
-			return View();
+			GetUserQuery query = new GetUserQuery(_context, _mapper);
+			var result = query.Handle();
+			return View(result);
 		}
 
 	}

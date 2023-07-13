@@ -65,7 +65,7 @@ namespace WebbySoftware.Common{
             CreateMap<CreateUserModel, UserDev>();
             CreateMap<UpdateUserModel, UserDev>();
 
-            CreateMap<UserDev, UserViewModel>();
+            CreateMap<UserDev, UserViewModel>().ReverseMap();
 
             CreateMap<UserDev, UserGameDevViewModel>();
             CreateMap<UserDev, UserGameDevViewIdModel>();

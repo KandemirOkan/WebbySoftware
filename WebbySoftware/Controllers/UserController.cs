@@ -13,8 +13,6 @@ using static WebbySoftware.Application.UserOperations.Commands.CreateUser.Create
 
 namespace WebbySoftware.Controllers.UserController;
 
-[ApiController]
-[Route("[controller]")]
 public class UserController : Controller
 {
     private readonly IWebbySoftDBContext _context;
@@ -29,7 +27,7 @@ public class UserController : Controller
     }
 
     [HttpGet("Team/[action]")]
-    public IActionResult UserList()
+    public IActionResult Contact()
     {
         GetUserQuery query = new GetUserQuery(_context, _mapper);
         var result = query.Handle();

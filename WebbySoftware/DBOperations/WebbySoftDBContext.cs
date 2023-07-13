@@ -21,7 +21,7 @@ namespace WebbySoftware.DBOperations
         public DbSet<GameDev> Games { get; set; }
         public DbSet<MobileDev> MobileApps { get; set; }
         public DbSet<WebDev> WebApps { get; set; }
-        public DbSet<DesktopDev> DeskApps {get; set;}
+        public DbSet<DesktopDev> DesktopApps {get; set;}
         public DbSet<UserDev> Users { get; set; }
 
         public DbSet<UserGameDev> GameDevs { get; set; }

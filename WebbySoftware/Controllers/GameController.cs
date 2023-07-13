@@ -1,24 +1,25 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using WebbySoftware.Application.GameOperations.Commands.CreateGame;
 using WebbySoftware.Application.GameOperations.Commands.DeleteGame;
 using WebbySoftware.Application.GameOperations.Commands.UpdateGame;
 using WebbySoftware.Application.GameOperations.Queries;
 using WebbySoftware.DBOperations;
 using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+using WebbySoftware.Models;
 
 namespace WebbySoftware.Controllers.GameController;
 
 [ApiController]
 [Route("[controller]")]
-public class GameController : ControllerBase
+public class GameController : Controller
 {
-    private readonly IWebbySoftDBContext context;
+    private readonly IWebbySoftDBContext _context;
     private readonly IMapper _mapper;
 
-    public GameController(IWebbySoftDBContext _context,IMapper mapper)
+    public GameController(IWebbySoftDBContext context, IMapper mapper)
     {
-        context = _context;
+        _context = context;
         _mapper = mapper;
     }
 
@@ -33,7 +34,7 @@ public class GameController : ControllerBase
     [HttpGet("Development/GameDevelopment/[action]")]
     public IActionResult GetGameQuery(string searchedTag)
     {
-        GetGameQuery query = new GetGameQuery(context, _mapper);
+        GetGameQuery query = new GetGameQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
         return Ok(result);
     }
@@ -42,7 +43,7 @@ public class GameController : ControllerBase
     [HttpGet("Development/GameDevelopment/[action]/{id}")]
     public IActionResult GetGameById(int id)
     {
-        GetGameByID query = new GetGameByID(context,_mapper);
+        GetGameByID query = new GetGameByID(_context,_mapper);
         GameDevIdModel result;
         query.GameID = id;
         GetGameByIdValidator validator = new GetGameByIdValidator();
@@ -54,7 +55,7 @@ public class GameController : ControllerBase
     [HttpPost("Development/GameDevelopment/[action]")]
     public IActionResult CreateGame([FromBody] GameDevModel newGame)
     {
-        CreateGameCommand command = new CreateGameCommand(context,_mapper);
+        CreateGameCommand command = new CreateGameCommand(_context,_mapper);
         command.Model = newGame;
         CreateGameCommandValidator validator = new CreateGameCommandValidator();
         validator.ValidateAndThrow(command);
@@ -65,7 +66,7 @@ public class GameController : ControllerBase
     [HttpPut("Development/GameDevelopment/[action]/{id}")]
     public IActionResult UpdateGame(int id,[FromBody] UpdateGameModel updateGame)
     {
-        UpdateGameCommand command = new UpdateGameCommand(context,_mapper);
+        UpdateGameCommand command = new UpdateGameCommand(_context,_mapper);
 
         command.GameID = id;
         command.Model = updateGame;
@@ -78,7 +79,7 @@ public class GameController : ControllerBase
     [HttpDelete("Development/GameDevelopment/[action]/{id}")]
     public IActionResult DeleteGame(int id)
     {
-        DeleteGameCommand command = new DeleteGameCommand(context);
+        DeleteGameCommand command = new DeleteGameCommand(_context);
         command.GameID=id;
         DeleteGameCommandValidator validator = new DeleteGameCommandValidator();
         validator.ValidateAndThrow(command);

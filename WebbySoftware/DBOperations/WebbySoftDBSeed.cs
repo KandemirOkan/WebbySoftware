@@ -3,6 +3,8 @@ using WebbySoftware.DBOperations;
 using Microsoft.EntityFrameworkCore;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.WebDev;
+using WebbySoftware.Entity.MobileDev;
+using WebbySoftware.Entity.DesktopDev;
 using WebbySoftware.Entity.User;
 using System;
 using System.Collections.Generic;
@@ -26,8 +28,8 @@ public class WebbySoftDBSeed
                 Surname = "Yildiz",
                 Title = "Co-founder",
                 Email = "yildizhakan88@gmail.com",
-                Password = "+905367849327",
-                Photo = "~/assets/img/team/HakanYıldız.png",
+                Phone = "+905367849327",
+                Photo = "~/assets/img/team/HakanYildiz.png",
                 GithubLink = "https://github.com/Hakkology",
                 LinkedINLink = "https://www.linkedin.com/in/hakan-yildiz-029845132/"
             };
@@ -38,7 +40,7 @@ public class WebbySoftDBSeed
                 Surname = "Kandemir",
                 Title = "Co-founder",
                 Email = "okan-kan@hotmail.com",
-                Password = "+905372771839",
+                Phone = "+905372771839",
                 Photo = "~/assets/img/team/OkanKandemir.png",
                 GithubLink = "https://github.com/KandemirOkan",
                 LinkedINLink = "https://www.linkedin.com/in/okan-kandemir-77427014b/"
@@ -77,7 +79,7 @@ public class WebbySoftDBSeed
             var game2 = new GameDev
             {
                 ProjectName = "Stack the Cubes",
-                ProjectDescription = "Runner Game made by Unity. Object Pooling and Procedural Content Generation Exercises along with a few game mechanics.",
+                ProjectDescription = "Runner Game made by Unity. Object Pooling and Procedural Content Generation exercises along with a few game mechanics.",
                 ProjectGitLink = "https://github.com/Hakkology/Stack-the-Cubes",
                 Thumbnails = new List<string> {
                     "~/assets/img/thumbnails/GameDev/StackTheCubes/STC1.png",
@@ -195,18 +197,38 @@ public class WebbySoftDBSeed
 
             var web3 = new WebDev
             {
-                ProjectName = "Currency-Converter",
-                ProjectDescription = "Using a free template, creation of a 5 layer E-Commerce website. Connected to MSSQL database. User login, register and basket features. More detailed outline categories.",
-                ProjectGitLink = "https://github.com/KandemirOkan/Form_App_CurrencyConversion",
+                ProjectName = "Bookstore-WebApi",
+                ProjectDescription = "Creation of a web-api that functions as a bookstore. ",
+                ProjectGitLink = "https://github.com/KandemirOkan/BookStoreWebApi",
                 Thumbnails = new List<string> {
-                    "~/assets/img/thumbnails/WebDev/CurrencyConverter/Currency_Converter_App.png"
+                    "~/assets/img/thumbnails/WebDev/BookStore/BookStore_Web_Api.png"
                 },
                 WebTags = new List<string>  {
-                    "c#", "aspnet"
+                    "c#", "webapi"
                 },
                 WebDevs = new List<UserWebDev>
                 {
                     new UserWebDev
+                    {
+                        Users = okanUser
+                    },
+                }
+            };
+
+            var desk1 = new DesktopDev
+            {
+                ProjectName = "Currency-Converter",
+                ProjectDescription = "Desktop application retrieves real-time exchange rates from the Central Bank of Turkey.",
+                ProjectGitLink = "https://github.com/KandemirOkan/Form_App_CurrencyConversion",
+                Thumbnails = new List<string> {
+                    "~/assets/img/thumbnails/WebDev/CurrencyConverter/Currency_Converter_App.png"
+                },
+                DeskTags = new List<string>  {
+                    "c#", "aspnet"
+                },
+                DeskDevs = new List<UserDeskDev>
+                {
+                    new UserDeskDev
                     {
                         Users = okanUser
                     },

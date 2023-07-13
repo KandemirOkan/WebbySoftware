@@ -15,13 +15,13 @@ namespace WebbySoftware.Application.DeskOperations.Commands.DeleteDesk{
 
         public void Handle(){
 
-            var desk = _dbContext.DeskApps.Where(x=>x.ID == DeskID).SingleOrDefault();
+            var desk = _dbContext.DesktopApps.Where(x=>x.ID == DeskID).SingleOrDefault();
             if (desk is null)
             {
                 throw new InvalidOperationException (ErrorMessages.NotFoundID);
             }
 
-            _dbContext.DeskDevs.Remove(desk);
+            _dbContext.DesktopApps.Remove(desk);
             _dbContext.SaveChanges();
 
         }

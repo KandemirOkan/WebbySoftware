@@ -27,7 +27,7 @@ namespace WebbySoftware.Application.DevOperations.Queries{
                 .OrderBy(m=>m.ID)
                 .ToList();
 
-            var deskList = _dbContext.DeskDevs
+            var deskList = _dbContext.DesktopApps
                 .OrderBy(m=>m.ID)
                 .ToList();
 

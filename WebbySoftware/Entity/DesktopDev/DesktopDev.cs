@@ -24,7 +24,7 @@ namespace WebbySoftware.Entity.DesktopDev
         // Many to Many relationship
         public ICollection<UserDeskDev> DeskDevs { get; set; }
 
-        public GameDev() {
+        public DesktopDev() {
             
             CreationDate = DateTime.Now;
             UpdateDate = DateTime.Now;

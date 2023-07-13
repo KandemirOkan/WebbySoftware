@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
+using WebbySoftware.Entity.DesktopDev;
 using System.Collections.Generic;
 
 namespace WebbySoftware.Entity.User
@@ -18,6 +19,9 @@ namespace WebbySoftware.Entity.User
         public string Photo { get; set; }
         public string GithubLink { get; set; }
         public string LinkedINLink { get; set; }
+        public DateTime? RefreshTokenExpireDate { get; set; }
+        public string? RefreshToken { get; set; }
+
 
         public ICollection<UserGameDev> GameDevs { get; set; }
         public ICollection<UserWebDev> WebDevs { get; set; }

@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using WebbySoftware.DBOperations;
 using WebbySoftware.Entity.User;
@@ -14,6 +15,7 @@ namespace WebbySoftware.Application.UserOperations.Queries
             _dbContext = dbContext;
             _mapper = mapper;
         }
+        
         public List<UserViewModel> Handle()
         {
             var users = _dbContext.Users.ToList<UserDev>();
@@ -27,6 +29,7 @@ namespace WebbySoftware.Application.UserOperations.Queries
         public string Surname { get; set; }
         public string Title { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
         public string Photo { get; set; }
         public string GithubLink { get; set; }
         public string LinkedINLink { get; set; }

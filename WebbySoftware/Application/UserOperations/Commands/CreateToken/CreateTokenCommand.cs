@@ -21,7 +21,7 @@ namespace WebbySoftware.Application.UserOperations.Commands.CreateToken
 
         public Token Handle()
         {
-            var user = _context.Users.FirstOrDefault(x => x.Email == Model.Email && x.Password == Model.Password);
+            var user = _context.Users.FirstOrDefault(x => x.Email == Model.Email);
             if (user is not null) 
             {
                 TokenHandler tokenHandler = new(_configuration);

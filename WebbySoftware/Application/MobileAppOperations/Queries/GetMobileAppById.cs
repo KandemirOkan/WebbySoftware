@@ -38,7 +38,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
         public string ProjectGitLink {get; set;}
         public string ProjectLink {get; set;}
         public List<string> MobileAppTags { get; set; }
-        public List<UserDev> Users {get; set;}
+        public List<UserMobileDevViewIdModel> Users {get; set;}
     }
 
     public class UserMobileDevViewIdModel

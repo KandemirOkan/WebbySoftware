@@ -76,7 +76,7 @@ namespace WebbySoftware
 					name: "searchedTag",
 					pattern: "Development/{action}/{searchedTag?}",
 					defaults: new { controller = "Home" },
-					constraints: new { action = "GameDevelopment|WebDevelopment|MobileAppDevelopment" }
+					constraints: new { action = "GameDevelopment|WebDevelopment|MobileAppDevelopment|DesktopDevelopment"}
 				);
 
 				endpoints.MapControllerRoute(

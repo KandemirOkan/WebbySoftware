@@ -21,7 +21,7 @@ namespace WebbySoftware.Entity.WebDev {
         public List<string> WebTags { get; set; }
 
         // specific attributes
-        public string ProjectWebpage { get; set; }
+        public string? ProjectWebpage { get; set; }
 
         // Many to many relationship
         public ICollection<UserWebDev> WebDevs { get; set; }

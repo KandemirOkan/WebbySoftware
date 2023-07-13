@@ -26,7 +26,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Commands.UpdateMobileApp
                 throw new InvalidOperationException(ErrorMessages.NotFoundID);
             }
 
-            if (_dbContext.Games.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != MobileAppID))
+            if (_dbContext.MobileApps.Any(x=>x.ProjectName.ToLower() == Model.ProjectName.ToLower() && x.ID != MobileAppID))
             {
                 throw new InvalidOperationException (ErrorMessages.ReplicateError);
             }

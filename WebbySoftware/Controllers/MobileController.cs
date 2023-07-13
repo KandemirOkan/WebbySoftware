@@ -6,11 +6,10 @@ using WebbySoftware.Application.MobileAppOperations.Queries;
 using WebbySoftware.DBOperations;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using WebbySoftware.Models;
 
 namespace WebbySoftware.Controllers.MobileAppController;
 
-[ApiController]
-[Route("[controller]")]
 public class MobileAppController : Controller
 {
     private readonly IWebbySoftDBContext _context;
@@ -23,7 +22,7 @@ public class MobileAppController : Controller
     }
 
     [HttpGet("Development/MobileAppDevelopment")]
-    public IActionResult MobileAppDevelopment(string searchedTag)
+    public IActionResult MobileAppDevelopment(string? searchedTag)
     {
         GetMobileAppQuery query = new GetMobileAppQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
@@ -31,7 +30,7 @@ public class MobileAppController : Controller
     }
 
     [HttpGet("Development/MobileAppDevelopment/[action]")]
-    public IActionResult GetMobileAppQuery(string searchedTag)
+    public IActionResult GetMobileAppQuery(string? searchedTag)
     {
         GetMobileAppQuery query = new GetMobileAppQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);

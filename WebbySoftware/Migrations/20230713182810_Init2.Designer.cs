@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebbySoftware.DBOperations;
@@ -12,9 +13,11 @@ using WebbySoftware.DBOperations;
 namespace WebbySoftware.Migrations
 {
     [DbContext(typeof(WebbySoftDbContext))]
-    partial class WebbySoftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230713182810_Init2")]
+    partial class Init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

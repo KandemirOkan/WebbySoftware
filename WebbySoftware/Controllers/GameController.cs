@@ -24,7 +24,7 @@ public class GameController : Controller
     }
 
     [HttpGet("Development/GameDevelopment")]
-    public IActionResult GameDevelopment(string searchedTag)
+    public IActionResult GameDevelopment(string? searchedTag)
     {
         GetGameQuery query = new GetGameQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
@@ -32,7 +32,7 @@ public class GameController : Controller
     }
 
     [HttpGet("Development/GameDevelopment/[action]")]
-    public IActionResult GetGameQuery(string searchedTag)
+    public IActionResult GetGameQuery(string? searchedTag)
     {
         GetGameQuery query = new GetGameQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);

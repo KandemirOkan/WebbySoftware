@@ -6,6 +6,7 @@ using WebbySoftware.Application.DeskOperations.Commands.UpdateDesk;
 using WebbySoftware.Application.DeskOperations.Queries;
 using WebbySoftware.DBOperations;
 using FluentValidation;
+using WebbySoftware.Models;
 namespace WebbySoftware.Controllers.DeskController
 {
     public class DeskController: Controller
@@ -20,7 +21,7 @@ namespace WebbySoftware.Controllers.DeskController
         }
 
         [HttpGet("Development/DesktopDevelopment")]
-        public IActionResult DesktopDevelopment(string searchedTag)
+        public IActionResult DesktopDevelopment(string? searchedTag)
         {
             GetDeskQuery query = new GetDeskQuery(_context, _mapper);
             var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
@@ -28,7 +29,7 @@ namespace WebbySoftware.Controllers.DeskController
         }
 
         [HttpGet("Development/DesktopDevelopment/[action]")]
-        public IActionResult GetDeskQuery(string searchedTag)
+        public IActionResult GetDeskQuery(string? searchedTag)
         {
             GetDeskQuery query = new GetDeskQuery(_context, _mapper);
             var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);

@@ -9,8 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebbySoftware.Controllers.WebController;
 
-[ApiController]
-[Route("[controller]")]
+
 public class WebController : Controller
 {
     private readonly IWebbySoftDBContext _context;
@@ -23,7 +22,7 @@ public class WebController : Controller
     }
 
     [HttpGet("Development/WebDevelopment")]
-    public IActionResult WebDevelopment(string searchedTag)
+    public IActionResult WebDevelopment(string? searchedTag)
     {
         GetWebQuery query = new GetWebQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);
@@ -31,7 +30,7 @@ public class WebController : Controller
     }
 
     [HttpGet("Development/WebDevelopment/[action]")]
-    public IActionResult GetWebQuery(string searchedTag)
+    public IActionResult GetWebQuery(string? searchedTag)
     {
         GetWebQuery query = new GetWebQuery(_context, _mapper);
         var result = string.IsNullOrEmpty(searchedTag) ? query.Handle() : query.Handle(searchedTag);

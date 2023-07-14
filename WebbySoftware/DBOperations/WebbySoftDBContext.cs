@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebbySoftware.Entity.GameDev;
 using WebbySoftware.Entity.MobileDev;
 using WebbySoftware.Entity.WebDev;
+using WebbySoftware.Entity.DesktopDev;
 using WebbySoftware.Entity.User;
 
 namespace WebbySoftware.DBOperations
@@ -20,10 +21,13 @@ namespace WebbySoftware.DBOperations
         public DbSet<GameDev> Games { get; set; }
         public DbSet<MobileDev> MobileApps { get; set; }
         public DbSet<WebDev> WebApps { get; set; }
+        public DbSet<DesktopDev> DesktopApps {get; set;}
         public DbSet<UserDev> Users { get; set; }
+
         public DbSet<UserGameDev> GameDevs { get; set; }
         public DbSet<UserWebDev> WebDevs { get; set; }
         public DbSet<UserMobileDev> MobileDevs { get; set; }
+        public DbSet<UserDeskDev> DeskDevs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -66,6 +70,19 @@ namespace WebbySoftware.DBOperations
                 .HasOne(uw => uw.WebDevs)
                 .WithMany(w => w.WebDevs)
                 .HasForeignKey(uw => uw.WebAppID);
+            
+            modelBuilder.Entity<UserDeskDev>()
+                .HasKey(ud => new { ud.UserID, ud.DeskID });
+
+            modelBuilder.Entity<UserDeskDev>()
+                .HasOne(ud => ud.Users)
+                .WithMany(u => u.DeskDevs)
+                .HasForeignKey(ud => ud.UserID);
+
+            modelBuilder.Entity<UserDeskDev>()
+                .HasOne(ud => ud.DeskDevs)
+                .WithMany(w => w.DeskDevs)
+                .HasForeignKey(ud => ud.DeskID);
 
             base.OnModelCreating(modelBuilder);
         }

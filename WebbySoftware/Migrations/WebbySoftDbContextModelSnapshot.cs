@@ -23,6 +23,65 @@ namespace WebbySoftware.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("WebbySoftware.Entity.DesktopDev.DesktopDev", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<List<string>>("DeskTags")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("ProjectDescription")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProjectGitLink")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProjectName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<List<string>>("Thumbnails")
+                        .HasColumnType("text[]");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DesktopApps");
+                });
+
+            modelBuilder.Entity("WebbySoftware.Entity.DesktopDev.UserDeskDev", b =>
+                {
+                    b.Property<int>("UserID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("DeskID")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserID", "DeskID");
+
+                    b.HasIndex("DeskID");
+
+                    b.ToTable("DeskDevs");
+                });
+
             modelBuilder.Entity("WebbySoftware.Entity.GameDev.GameDev", b =>
                 {
                     b.Property<int>("ID")
@@ -169,7 +228,7 @@ namespace WebbySoftware.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -241,7 +300,6 @@ namespace WebbySoftware.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ProjectWebpage")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Thumbnails")
@@ -257,6 +315,25 @@ namespace WebbySoftware.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("WebApps");
+                });
+
+            modelBuilder.Entity("WebbySoftware.Entity.DesktopDev.UserDeskDev", b =>
+                {
+                    b.HasOne("WebbySoftware.Entity.DesktopDev.DesktopDev", "DeskDevs")
+                        .WithMany("DeskDevs")
+                        .HasForeignKey("DeskID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebbySoftware.Entity.User.UserDev", "Users")
+                        .WithMany("DeskDevs")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeskDevs");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("WebbySoftware.Entity.GameDev.UserGameDev", b =>
@@ -316,6 +393,11 @@ namespace WebbySoftware.Migrations
                     b.Navigation("WebDevs");
                 });
 
+            modelBuilder.Entity("WebbySoftware.Entity.DesktopDev.DesktopDev", b =>
+                {
+                    b.Navigation("DeskDevs");
+                });
+
             modelBuilder.Entity("WebbySoftware.Entity.GameDev.GameDev", b =>
                 {
                     b.Navigation("GameDevs");
@@ -328,6 +410,8 @@ namespace WebbySoftware.Migrations
 
             modelBuilder.Entity("WebbySoftware.Entity.User.UserDev", b =>
                 {
+                    b.Navigation("DeskDevs");
+
                     b.Navigation("GameDevs");
 
                     b.Navigation("MobileDevs");

@@ -38,7 +38,7 @@ namespace WebbySoftware.Application.GameOperations.Queries{
         public List<string> Thumbnails {get; set;}
         public string ProjectGitLink {get; set;}
         public List<string> GameTags { get; set; }
-        public List<UserDev> Users {get; set;}
+        public List<UserGameDevViewIdModel> Users {get; set;}
 
     }
 

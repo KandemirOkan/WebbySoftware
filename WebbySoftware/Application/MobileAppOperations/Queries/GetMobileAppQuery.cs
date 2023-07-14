@@ -32,7 +32,9 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
             var mobileAppList = _dbContext.MobileApps
                 .Include(g => g.MobileDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.MobileAppTags.Contains(searchedTag) || g.ProjectName.Contains(searchedTag)) // Filter mobile apps based on the searched tag
+                .Where(g => g.MobileAppTags.Contains(searchedTag) 
+                            || g.ProjectName.Contains(searchedTag)
+                            || g.MobileDevs.Any(d => d.Users.Name.Contains(searchedTag))) // Filter based on associated user names
                 .OrderBy(g => g.ID)
                 .ToList();
 

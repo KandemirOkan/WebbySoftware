@@ -34,4 +34,6 @@ All different returns were implemented with a different view model, connected th
 Each project is associated with a User, reflecting project participants.
 Later each project is presented on relevant development pages for showcasing. Guests can also use the query tool to search for Users, Project Names and Project tags.
 
+We are aware of websites loading times, it is slow. The whole idea was to bring it up with free services and choices, so the server selection was not as efficient as we could use.
+
 Feel free to give your comments.

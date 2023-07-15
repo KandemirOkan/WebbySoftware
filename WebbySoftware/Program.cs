@@ -44,7 +44,7 @@ namespace WebbySoftware
 			
 
 			// Configure the HTTP request pipeline.
-			if (env.IsDevelopment() || env.IsEnvironment("Azure"))
+			if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Azure"))
 			{
 				app.UseDeveloperExceptionPage();
 			}

@@ -54,20 +54,5 @@ namespace WebbySoftware.Controllers
 			return View(result);
 		}
 
-		[HttpGet("testdbconnection")]
-		public async Task<ActionResult> TestDBConnection()
-		{
-			try
-			{
-				// Assuming that your _context is the instance of your DBContext.
-				await _context.Database.CanConnectAsync();
-				return Ok("Connected successfully");
-			}
-			catch (Exception ex)
-			{
-				return BadRequest($"Failed to connect: {ex.Message}");
-			}
-		}
-
 	}
 }

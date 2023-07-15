@@ -2,6 +2,7 @@
 Portfolio Project
 
 #MIT License
+
 Copyright (c) 2023 WebbySoftware Initiative
 
 Template for html is a free template provided from this link:
@@ -13,9 +14,11 @@ Creators of this project require no financial gain from it. Whole purpose of thi
 WebbySoftware Initiative Portfolio Project is a portfolio created with ASP.NET where Hakan Yıldız and Okan Kandemir worked in collaboration to finalize. Please refer to relevant github pages from here:
 
 https://github.com/Hakkology
+
 https://github.com/KandemirOkan
 
 The scope of the project is to create a basic portfolio website where we could showcase our works in thumbnails and provide query methods using ASP.NET api/view implementation.
+
 Website is currently live at:
 
 https://webbysoftinit.azurewebsites.net/ 

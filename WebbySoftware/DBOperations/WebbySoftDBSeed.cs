@@ -231,7 +231,34 @@ public class WebbySoftDBSeed
                     }
                 };
 
-                context.WebApps.AddRange(web1, web2, web3);
+                var web4 = new WebDev
+                {
+                    ProjectName = "Webbysoft Initiative",
+                    ProjectDescription = "Creation of a portfolio website that will be used to showcase works of contributors. Connected to PostgreSQL database. Utilized as webapi and ASP.NET Project. ",
+                    ProjectGitLink = "https://github.com/Hakkology/WebbySoftware",
+                    Thumbnails = new List<string> {
+                        "~/assets/img/thumbnails/WebDev/Webbysoft/Webby1.png",
+                        "~/assets/img/thumbnails/WebDev/Webbysoft/Webby2.png",
+                        "~/assets/img/thumbnails/WebDev/Webbysoft/Webby3.png",
+                        "~/assets/img/thumbnails/WebDev/Webbysoft/Webby4.png",
+                    },
+                    WebTags = new List<string>  {
+                        "c#", "webapi", "portfolio", "aspnet"
+                    },
+                    WebDevs = new List<UserWebDev>
+                    {
+                        new UserWebDev
+                        {
+                            Users = okanUser
+                        },
+                        new UserWebDev
+                        {
+                            Users = hakanUser
+                        }
+                    }
+                };
+
+                context.WebApps.AddRange(web1, web2, web3, web4);
                 context.SaveChanges();
             }
 

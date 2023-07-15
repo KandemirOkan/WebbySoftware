@@ -29,8 +29,8 @@ namespace WebbySoftware
 
 			builder.Services.AddSingleton(builder.Configuration);
 			builder.Services.AddScoped<IWebbySoftDBContext, WebbySoftDbContext>();
-			string connStr = new WebbySoftConnStr(builder.Configuration).GetConnectionString();
-			builder.Services.AddDbContext<WebbySoftDbContext>(o => o.UseNpgsql(connStr));
+			builder.Services.AddDbContext<WebbySoftDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("ElephantSQLConnection")));
+
 
 			builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -39,17 +39,20 @@ namespace WebbySoftware
 			using (var scope = app.Services.CreateScope()){
 
 				var services = scope.ServiceProvider;
-				WebbySoftDBSeed.Initialize(services);
+				//WebbySoftDBSeed.Initialize(services);
 			}
 			
 
 			// Configure the HTTP request pipeline.
-			if (!app.Environment.IsDevelopment())
+			if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Azure"))
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
 			{
 				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+				// The default HSTS value is 30 days.
 				app.UseHsts();
-
 			}
 
 			if (app.Environment.IsDevelopment())

@@ -39,7 +39,7 @@ namespace WebbySoftware
 			using (var scope = app.Services.CreateScope()){
 
 				var services = scope.ServiceProvider;
-				WebbySoftDBSeed.Initialize(services);
+				//WebbySoftDBSeed.Initialize(services);
 			}
 			
 

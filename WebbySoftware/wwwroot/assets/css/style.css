@@ -1013,6 +1013,13 @@ section {
   overflow: hidden;
 }
 
+.team .member .pic img {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+}
+
+
 .team .member .member-info {
   position: absolute;
   top: 85%;

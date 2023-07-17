@@ -31,7 +31,7 @@
         @foreach (var game in Model) {
         <div class="project-module">
             <!-- Project Name -->
-            <div class="row">
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
                 <div class="col-12">
                     <h1 class="project-name">@game.ProjectName</h1>
                 </div>
@@ -49,9 +49,14 @@
                         }
                     </ul>
                     <!-- List of Tags -->
-                    <div style="display: flex; align-items: center;">
-                    <h5 style="margin-right: 5px;">Tags:</h5>
-                    <p style="margin: 0;">@string.Join(", ", game.GameTags)</p>
+                    <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <h5 style="margin-right: 5px;">Tags:</h5>
+                            <p style="margin: 0;">@string.Join(", ", game.GameTags)</p>
+                        </div>
+                        <div>
+                            <p class="github-link"><a href="@game.ProjectGitLink">Project GitHub Link</a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -67,13 +72,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- GitHub Link -->
-            <div class="row mt-3">
-                <div class="col-12">
-                    <p class="github-link"><a href="@game.ProjectGitLink">Project GitHub Link</a></p>
                 </div>
             </div>
         </div>

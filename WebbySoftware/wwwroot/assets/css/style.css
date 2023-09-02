@@ -650,6 +650,20 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
+.splide__slide {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: [desiredHeight]; /* Set this to a fixed height if you want a consistent height for all slides. e.g., 300px */
+}
+
+.splide__slide img {
+    max-height: 200px;      /* You can adjust this value as per your requirements */
+    width: auto;            /* Ensures the width adjusts proportionally */
+}
+
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }

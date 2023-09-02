@@ -29,6 +29,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
 
         public List<WebViewModel> Handle(string searchedTag)
         {
+            searchedTag = searchedTag.ToLower();
             var webList = _dbContext.WebApps
                 .Include(g => g.WebDevs)
                     .ThenInclude(ug => ug.Users)

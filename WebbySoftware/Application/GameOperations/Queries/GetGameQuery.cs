@@ -29,6 +29,7 @@ namespace WebbySoftware.Application.GameOperations.Queries{
 
         public List<GameDevViewModel> Handle(string searchedTag)
         {
+            searchedTag = searchedTag.ToLower();
             var gameList = _dbContext.Games
                 .Include(g => g.GameDevs)
                     .ThenInclude(ug => ug.Users)

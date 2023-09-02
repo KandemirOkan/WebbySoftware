@@ -29,6 +29,7 @@ namespace WebbySoftware.Application.MobileAppOperations.Queries{
 
         public List<MobileAppDevViewModel> Handle(string searchedTag)
         {
+            searchedTag = searchedTag.ToLower();
             var mobileAppList = _dbContext.MobileApps
                 .Include(g => g.MobileDevs)
                     .ThenInclude(ug => ug.Users)

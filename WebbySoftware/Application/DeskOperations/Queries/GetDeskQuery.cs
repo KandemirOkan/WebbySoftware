@@ -29,6 +29,7 @@ namespace WebbySoftware.Application.DeskOperations.Queries{
 
         public List<DeskDevViewModel> Handle(string searchedTag)
         {
+            searchedTag = searchedTag.ToLower();
             var gameList = _dbContext.DesktopApps
                 .Include(g => g.DeskDevs)
                     .ThenInclude(ug => ug.Users)

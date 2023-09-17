@@ -655,17 +655,19 @@ section {
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: center;     /* Centers vertically */
-    height: [desiredHeight]; /* Set this to a fixed height if you want a consistent height for all slides. e.g., 300px */
+    height: 400px; /* Set this to a fixed height if you want a consistent height for all slides. e.g., 300px */
 }
 
 .splide__slide img {
-    max-height: 200px;      /* You can adjust this value as per your requirements */
-    width: auto;            /* Ensures the width adjusts proportionally */
+  height: 100% !important;
+  width: auto !important;
+  object-fit: cover !important;
+  max-height: 60vh !important;
 }
 
 
 .portfolio .portfolio-item {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .portfolio #portfolio-flters {
@@ -707,7 +709,7 @@ section {
 
 .portfolio .portfolio-wrap .img-fluid {
   object-fit: cover;
-  height: 300px; /* specify the height that works for your design */
+  height: 500px; /* specify the height that works for your design */
   width: 100%;
 }
 

@@ -29,11 +29,10 @@ namespace WebbySoftware.Application.DeskOperations.Queries{
 
         public List<DeskDevViewModel> Handle(string searchedTag)
         {
-            searchedTag = searchedTag.ToLower();
             var gameList = _dbContext.DesktopApps
                 .Include(g => g.DeskDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.DeskTags.Contains(searchedTag) 
+                .Where(g => g.DeskTags.Contains(searchedTag.ToLower()) 
                             || g.ProjectName.Contains(searchedTag)
                             || g.DeskDevs.Any(d => d.Users.Name.Contains(searchedTag))) // Filter based on associated user names
                 .OrderBy(g => g.ID)

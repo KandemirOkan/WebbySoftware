@@ -29,11 +29,10 @@ namespace WebbySoftware.Application.GameOperations.Queries{
 
         public List<GameDevViewModel> Handle(string searchedTag)
         {
-            searchedTag = searchedTag.ToLower();
             var gameList = _dbContext.Games
                 .Include(g => g.GameDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.GameTags.Contains(searchedTag) 
+                .Where(g => g.GameTags.Contains(searchedTag.ToLower()) 
                             || g.ProjectName.Contains(searchedTag)
                             || g.GameDevs.Any(d => d.Users.Name.Contains(searchedTag))) // Filter based on associated user names
                 .OrderBy(g => g.ID)

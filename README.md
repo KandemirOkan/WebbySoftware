@@ -20,7 +20,7 @@ The scope of the project is to create a basic portfolio website where we could s
 
 Website is currently live at:
 
-### https://webbysoftinit.azurewebsites.net/ 
+### https://webbysoftinit.com/ 
 
 WebbySoftware Initiative Portfolio Project is a project completed through webapi and ASP.NET tools.
 Users are connected to Development controllers which are categorized as game, web, mobile and desktop development with many to many relationships.

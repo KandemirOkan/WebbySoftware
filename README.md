@@ -23,7 +23,7 @@ Website is currently live at:
 ### https://webbysoftinit.com/ 
 
 WebbySoftware Initiative Portfolio Project is a project completed through webapi and ASP.NET tools.
-Users are connected to Development controllers which are categorized as game, web, mobile and desktop development with many to many relationships.
+Users (In this case project contributers) are connected to Development controllers which are categorized as game, web, mobile and desktop development with many to many relationships.
 
 Postgresql cloud db is used to feed the site and its contents. The database was seeded and utilized with a code first approach. 
 All content within also has links to relevant github links and, if applicable, web pages, tags, project name and description.
@@ -33,6 +33,6 @@ All different returns were implemented with a different view model, connected th
 Each project is associated with a User, reflecting project participants.
 Later each project is presented on relevant development pages for showcasing. Guests can also use the query tool to search for Users, Project Names and Project tags.
 
-We are aware of websites loading times, it is slow. The whole idea was to bring it up with free services and choices, so the server selection was not as efficient as we could use.
+The website is moved on a linux server on Digital Ocean and no longer suffers from slow loading times or downtimes. The server is available 24/7.
 
 Feel free to give your comments.

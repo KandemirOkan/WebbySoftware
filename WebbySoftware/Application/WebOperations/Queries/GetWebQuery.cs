@@ -32,7 +32,7 @@ namespace WebbySoftware.Application.WebOperations.Queries{
             var webList = _dbContext.WebApps
                 .Include(g => g.WebDevs)
                     .ThenInclude(ug => ug.Users)
-                .Where(g => g.WebTags.Contains(searchedTag) 
+                .Where(g => g.WebTags.Contains(searchedTag.ToLower()) 
                             || g.ProjectName.Contains(searchedTag)
                             || g.WebDevs.Any(d => d.Users.Name.Contains(searchedTag))) // Filter based on associated user names
                 .OrderBy(g => g.ID)

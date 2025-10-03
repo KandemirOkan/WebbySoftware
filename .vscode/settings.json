@@ -1,0 +1,6 @@
+{
+    "dotnet.defaultSolution": "WebbySoftware.sln",
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "master"
+    ]
+}

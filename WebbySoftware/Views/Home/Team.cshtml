@@ -20,12 +20,11 @@
         <div class="row">
             @foreach (var user in Model)
             {
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-4">
                     <div class="member" data-aos="zoom-in">
                         <div class="pic"><img src="@Url.Content(user.Photo)" class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>@user.Name @user.Surname</h4>
-                            <h4>Contact No: @user.Phone</h4>
                             <span>@user.Title</span>
                             <div class="social">
                                 <a href="@user.GithubLink"><i class="bi bi-github"></i></a>

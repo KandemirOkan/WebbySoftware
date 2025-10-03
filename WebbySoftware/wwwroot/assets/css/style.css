@@ -650,8 +650,24 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
+.splide__slide {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 400px; /* Set this to a fixed height if you want a consistent height for all slides. e.g., 300px */
+}
+
+.splide__slide img {
+  height: 100% !important;
+  width: auto !important;
+  object-fit: cover !important;
+  max-height: 60vh !important;
+}
+
+
 .portfolio .portfolio-item {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .portfolio #portfolio-flters {
@@ -693,7 +709,7 @@ section {
 
 .portfolio .portfolio-wrap .img-fluid {
   object-fit: cover;
-  height: 300px; /* specify the height that works for your design */
+  height: 500px; /* specify the height that works for your design */
   width: 100%;
 }
 
@@ -1012,6 +1028,13 @@ section {
 .team .member .pic {
   overflow: hidden;
 }
+
+.team .member .pic img {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+}
+
 
 .team .member .member-info {
   position: absolute;
